@@ -1,0 +1,360 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ name }} - Portfolio</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Standard favicon (works in most browsers) -->
+    <link rel="icon" type="image/x-icon" href="{% static 'self-img.png' %}" style="border-radius: 100%;">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        section {
+            padding: 60px 0;
+        }
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease;
+        }
+        .bg-light-alt {
+            background-color: #f4f7fc;
+        }
+        #skills, #projcts img {
+            transition: transform 0.3s ease;
+        }
+        #skills, #projcts img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            section {
+                padding: 40px 0;
+            }
+            .navbar-nav {
+                text-align: center;
+            }
+            .card {
+                margin-bottom: 20px;
+            }
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+            .list-group-item {
+                padding: 12px 15px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+    <div class="container">
+        <a class="navbar-brand" href="#">{{ name }}</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                <li class="nav-item"><a class="nav-link" href="#certifications&achivements">Certifications & Achivements</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- About -->
+<section id="about" class="bg-light" data-aos="fade-up">
+    <div class="container text-center">
+        <img style="width:100px; height:100px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'self-img.png' %}" class="card-img-top project-img" alt="Logo">
+        <h1 class="mb-3">{{ name }}</h1>
+        <h5 class="text-muted">{{ title }}</h5>
+        <p class="mt-4 px-3 px-md-0">{{ about }}</p>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="bg-light-alt py-5" data-aos="fade-up">
+    <div class="container">
+        <h2 class="text-center mb-4">Skills</h2>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <ul class="list-group list-group-flush">
+                    {% for skill in skills %}
+                    <li class="list-group-item d-flex align-items-center gap-3 py-3 border-bottom">
+                        {% with first_word=skill.name.split.0|lower %}
+                        <img style="width:30px; height:30px; border-radius: 100%;" 
+                             src="{% static 'skills/'|add:first_word|add:'.png' %}" 
+                             class="card-img-top project-img" 
+                             alt="{{ skill.name }} logo">
+                        {% endwith %}
+                        <span class="fw-medium">
+                            {{ skill.name }}
+                        </span>                    
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-5 bg-light" data-aos="fade-up">
+    <div class="container">
+        <h2 class="text-center mb-4">Projects</h2>
+        <div class="row justify-content-center">
+            <!-- AI Mutual Fund Recommendation -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                  <a href="https://mutual-fund-recommender-amt2.onrender.com/" style="text-decoration: none; color:black;">
+                    <div class="card-body">
+                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/fund-reco.png' %}" class="card-img-top project-img" alt="Logo">
+                        <h5 class="card-title">AI-Powered Mutual Fund Recommendation System</h5>
+                        <p class="card-text">Personalized mutual fund recommendations based on investor goals, risk profile, and investment horizon.</p>
+                        <small class="text-muted">Python, AI/ML, Financial APIs, Data Analysis</small>
+                        <ul class="mt-2 ps-3">
+                            <li>Hybrid filtering approach (collaborative + content-based)</li>
+                            <li>Real-time market analysis from financial sources</li>
+                            <li>Secure & compliant with financial regulations</li>
+                        </ul>
+                    </div>
+                   </a>
+                    <div class="card-footer"><small>August 2024 - May 2025</small></div>
+                </div>
+            </div>
+
+            <!-- Course Recommendation -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                  <a href="https://king9.pythonanywhere.com/" style="text-decoration: none; color:black;">
+
+                    <div class="card-body">
+                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/course-reco.png' %}" class="card-img-top project-img" alt="Logo">
+
+                        <h5 class="card-title">AI-Powered Online Course Recommendation System</h5>
+                        <p class="card-text">Suggests relevant courses based on user interests using AI by computing similarity scores.</p>
+                        <small class="text-muted">AI, Python, HTML, CSS, JavaScript</small>
+                        <ul class="mt-2 ps-3">
+                            <li>Real-time input handling</li>
+                            <li>Dynamic recommendation display</li>
+                            <li>Responsive user interface</li>
+                        </ul>
+                    </div>
+                   </a>
+                    <div class="card-footer"><small>July 2024 - September 2024</small></div>
+                </div>
+            </div> 
+
+            <!-- Budget Wisely -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                  <a href="https://budget-wisely-r167.onrender.com/" style="text-decoration: none; color:black;">
+
+                    <div class="card-body">
+                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/budget-wisely.png' %}" class="card-img-top project-img" alt="Logo">
+                        <h5 class="card-title">Budget Wisely</h5>
+                        <p class="card-text">A powerful web application designed to help users take full control of their finances on a monthly or yearly basis.</p>
+                        <small class="text-muted">Python, Flask, HTML, CSS, JavaScript, Data Visualization</small>
+                        <ul class="mt-2 ps-3">
+                            <li>Visual insights through dynamic pie charts and bar graphs</li>
+                            <li>Helps identify overspending areas</li>
+                            <li>Data-driven approach for smarter financial decisions</li>
+                        </ul>
+                    </div>
+                   </a>
+                    <div class="card-footer"><small>February 2025 - April 2025</small></div>
+                </div>
+            </div>
+
+            <!-- TaskCare360 -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                  <a href="https://taskcare360.onrender.com/" style="text-decoration: none; color:black;">
+                    <div class="card-body">
+                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/task-care.PNG' %}" class="card-img-top project-img" alt="Logo">
+                        <h5 class="card-title">TaskCare360</h5>
+                        <p class="card-text">A user-friendly ToDo web application that enables users to efficiently manage their daily tasks.</p>
+                        <small class="text-muted">Flask, HTML, CSS, JavaScript, SMTP</small>
+                        <ul class="mt-2 ps-3">
+                            <li>Automated daily email reminders for pending tasks</li>
+                            <li>Secure password reset functionality with OTP</li>
+                            <li>Responsive and intuitive interface</li>
+                        </ul>
+                    </div>
+                    </a>
+                    <div class="card-footer"><small>December 2024 - February 2025</small></div>
+                </div>
+            </div>
+            
+            <!-- My Portfolio -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                  <a href="https://taskcare360.onrender.com/" style="text-decoration: none; color:black;">
+                    <div class="card-body">
+                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'self-img.png' %}" class="card-img-top project-img" alt="Logo">
+                        <h5 class="card-title">My Portfolio</h5>
+                        <p class="card-text">A user-friendly Portfolio to show all details about, education, projects and more.</p>
+                        <small class="text-muted">Django, HTML, CSS, JavaScript, Bootstrap</small>
+                        <ul class="mt-2 ps-3">
+                            <li>Shows all details in a proper manner</li>
+                            <li>Easy to navigate with intuitive buttons</li>
+                            <li>Responsive and intuitive interface</li>
+                            <li>Dynamically loads content for faster performance</li>
+                            <li>Cross-browser compatible design</li>
+                        </ul>
+                    </div>
+                    </a>
+                    <div class="card-footer"><small>June 2025 - June 2025</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="bg-light-alt" data-aos="fade-up">
+    <div class="container">
+        <h2 class="text-center mb-4">Experience</h2>
+        {% for exp in experience %}
+        <div class="mb-4 px-3 px-md-0">
+            <h5 class="fw-bold">{{ exp.position }} <span class="text-muted">- {{ exp.company }}</span></h5>
+            <small class="text-primary">{{ exp.duration }}</small>
+            <p>{{ exp.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education" class="bg-light" data-aos="fade-up">
+    <div class="container">
+        <h2 class="text-center mb-4">Education</h2>
+        {% for edu in education %}
+        <div class="mb-3 px-3 px-md-0">
+            <h5>{{ edu.degree }} - {{ edu.institution }}</h5>
+            <small class="text-primary">{{ edu.year }}</small><br />
+            <strong>Score:</strong> {{ edu.score }}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Certifications & Achievements -->
+<section id="certifications&achivements" class="bg-light-alt" data-aos="fade-up">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-4 mb-md-0">
+                <h3 class="text-center text-md-start">Certifications</h3>
+                <ul class="ps-3">
+                    {% for cert in certifications %}
+                    <li>{{ cert }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12 col-md-6">
+                <h3 class="text-center text-md-start">Achievements</h3>
+                <ul class="ps-3">
+                    {% for achieve in achievements %}
+                    <li>{{ achieve }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Languages -->
+<section class="bg-light" data-aos="fade-up">
+    <div class="container">
+        <h3 class="text-center mb-4">Languages</h3>
+        <div class="row justify-content-center">
+            {% for lang in languages %}
+            <div class="col-6 col-md-4 text-center mb-3">
+                <strong>{{ lang.name }}</strong><br />
+                <span class="text-muted">{{ lang.proficiency }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="bg-light-alt" data-aos="fade-up">
+    <div class="container text-center">
+        <h2 class="mb-4">Contact</h2>
+        <p><i class="fas fa-envelope text-primary"></i> <a href="mailto:{{ email }}">{{ email }}</a></p>
+        <p><i class="fas fa-phone text-primary"></i> <a href="tel:{{ phone }}">{{ phone }}</a></p>
+        <p><i class="fas fa-map-marker-alt text-primary"></i> {{ address }}</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p class="mb-1">&copy; 2025 {{ name }} | All Rights Reserved</p>
+    <div class="mt-1">
+        <!-- Social Media -->
+        <a href="{{ social_links.github }}" class="text-white me-3"><i class="fab fa-github"></i></a>
+        <a href="{{ social_links.linkedin }}" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+        <a href="{{ social_links.naukri }}" class="text-white me-3">
+            <img style="width:15px; height:15px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'media/naukri.png' %}" alt="naukri">
+        </a>
+        <a href="{{ social_links.hackerrank }}" class="text-white me-3">
+            <img style="width:15px; height:15px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'media/hackerrank.png' %}" alt="naukri">
+        </a>
+        <a href="{{ social_links.leetcode }}" class="text-white me-3">
+            <img style="width:15px; height:15px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'media/leetcode.png' %}" alt="naukri">
+        </a>
+
+        <!-- Other Services -->
+        <a href="https://wa.me/{{ social_links.whatsapp }}" target="_blank" class="text-white me-3">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/{{ social_links.instagram }}" target="_blank" class="text-white me-3">
+        <i class="fab fa-instagram"></i>
+        </a>
+
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+</script>
+</body>
+</html>

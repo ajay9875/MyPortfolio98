@@ -1,0 +1,52 @@
+# Virtual environments
+.venv/
+venv/
+
+# Database
+db.sqlite3
+
+# Media files (user-uploaded content)
+media/
+
+# Python cache/compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore the mutual funds data JSON file
+mutual_funds_data.json
+
+# Environment variables
+.env
+*.env
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Database
+*.sqlite3
+*.db
+*.sqlite
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Explicitly keep these (remove from .gitignore if present)
+!Myproject/
+!Myapp/
+!static/
+!manage.py
+!requirements.txt
+!/.gitignore
