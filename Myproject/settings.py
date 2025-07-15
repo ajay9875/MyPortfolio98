@@ -10,8 +10,9 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=True, cast=bool)
 
 # Hosts configuration
-BASE_ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
+BASE_ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', 'myportfolio-oq8m.onrender.com']
 env_hosts = config("ALLOWED_HOSTS", default='').split(',')
+
 ALLOWED_HOSTS = [host.strip() for host in BASE_ALLOWED_HOSTS + env_hosts if host.strip()]
 
 # Application definition
@@ -118,3 +119,20 @@ else:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+
+import sys
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG' if DEBUG else 'WARNING',
+    },
+}
