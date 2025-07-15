@@ -101,6 +101,7 @@ def portfolio(request):
             'Implemented AI/ML solutions in financial and educational domains'
         ],
 
+
         'social_links':{
             'github': config('GITHUB_URL', default='/'),
             'linkedin': config('LINKEDIN_URL', default='#'),
