@@ -41,6 +41,76 @@
         #skills, #projcts img:hover {
             transform: scale(1.1);
         }
+
+        /* Skills Section - Two Column Layout */
+        #skills .list-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        #skills .list-group-item {
+            border: none !important;
+            padding: 1rem;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        #skills .list-group-item:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile: Single column */
+        @media (max-width: 767px) {
+            #skills .list-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Keep your existing skill item styling */
+        #skills .list-group-item img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: contain;
+        }
+
+        #skills .list-group-item span {
+            font-size: 1rem;
+            margin-left: 12px;
+        }
+
+        /* Intro video style */
+        .video-section {
+        padding: 2rem 0;
+        }
+
+        .video-wrapper {
+        max-width: 800px;  /* Limits width on large screens */
+        margin: 0 auto;    /* Centers the video */
+        }
+
+        /* Video Element Styling */
+        .intro-video {
+        width: 100%;       /* Full width of container */
+        height: auto;      /* Maintain aspect ratio */
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        background: #000;  /* Black background while loading */
+        display: block;    /* Removes inline spacing */
+        }
+
+        /* Mobile-Specific Tweaks */
+        @media (max-width: 768px) {
+        .video-section {
+            padding: 1rem 0;
+        }
+        
+        .intro-video {
+            border-radius: 8px;  /* Slightly smaller radius on mobile */
+        }
+        }
         
         /* Mobile-specific styles */
         @media (max-width: 768px) {
@@ -90,7 +160,8 @@
                 <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                 <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                 <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-                <li class="nav-item"><a class="nav-link" href="#certifications&achivements">Certifications & Achivements</a></li>
+                <li class="nav-item"><a class="nav-link" href="#certifications&achivements">Certifications</a></li>
+                <li class="nav-item"><a class="nav-link" href="#introduction">Introduction Video</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -134,14 +205,14 @@
 </section>
 
 <!-- Projects Section -->
-<section id="projects" class="py-5 bg-light" data-aos="fade-up">
+<section id="projects" style="margin-top: 50px;" class="bg-light-alt py-5" data-aos="fade-up">
     <div class="container">
         <h2 class="text-center mb-4">Projects</h2>
         <div class="row justify-content-center">
             <!-- AI Mutual Fund Recommendation -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <a href="https://mutual-fund-recommender-amt2.onrender.com/" style="text-decoration: none; color:black;">
                 <div class="card h-100 shadow-sm">
-                  <a href="https://mutual-fund-recommender-amt2.onrender.com/" style="text-decoration: none; color:black;">
                     <div class="card-body">
                         <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/fund-reco.png' %}" class="card-img-top project-img" alt="Logo">
                         <h5 class="card-title">AI-Powered Mutual Fund Recommendation System</h5>
@@ -153,16 +224,15 @@
                             <li>Secure & compliant with financial regulations</li>
                         </ul>
                     </div>
-                   </a>
-                    <div class="card-footer"><small>August 2024 - May 2025</small></div>
+                    <div class="card-footer" style="margin-top: auto;"><small>August 2024 - May 2025</small></div>
                 </div>
+              </a>
             </div>
 
             <!-- Course Recommendation -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
+               <a href="https://king9.pythonanywhere.com/" style="text-decoration: none; color:black;">
                 <div class="card h-100 shadow-sm">
-                  <a href="https://king9.pythonanywhere.com/" style="text-decoration: none; color:black;">
-
                     <div class="card-body">
                         <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/course-reco.png' %}" class="card-img-top project-img" alt="Logo">
 
@@ -175,16 +245,15 @@
                             <li>Responsive user interface</li>
                         </ul>
                     </div>
-                   </a>
-                    <div class="card-footer"><small>July 2024 - September 2024</small></div>
+                    <div class="card-footer" style="margin-top: auto;"><small>July 2024 - September 2024</small></div>
                 </div>
+               </a>
             </div> 
 
             <!-- Budget Wisely -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="card h-100 shadow-sm">
                   <a href="https://budget-wisely-r167.onrender.com/" style="text-decoration: none; color:black;">
-
+                   <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/budget-wisely.png' %}" class="card-img-top project-img" alt="Logo">
                         <h5 class="card-title">Budget Wisely</h5>
@@ -196,15 +265,15 @@
                             <li>Data-driven approach for smarter financial decisions</li>
                         </ul>
                     </div>
-                   </a>
-                    <div class="card-footer"><small>February 2025 - April 2025</small></div>
+                    <div class="card-footer" style="margin-top: auto;"><small>February 2025 - April 2025</small></div>
                 </div>
+               </a>
             </div>
 
             <!-- TaskCare360 -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="card h-100 shadow-sm">
                   <a href="https://taskcare360.onrender.com/" style="text-decoration: none; color:black;">
+                   <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/task-care.PNG' %}" class="card-img-top project-img" alt="Logo">
                         <h5 class="card-title">TaskCare360</h5>
@@ -216,15 +285,15 @@
                             <li>Responsive and intuitive interface</li>
                         </ul>
                     </div>
-                    </a>
-                    <div class="card-footer"><small>December 2024 - February 2025</small></div>
+                    <div class="card-footer" style="margin-top: auto;"><small>December 2024 - February 2025</small></div>
                 </div>
+               </a>
             </div>
             
             <!-- My Portfolio -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <div class="card h-100 shadow-sm">
                   <a href="https://myportfolio-oq8m.onrender.com/" style="text-decoration: none; color:black;">
+                   <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'self-img.png' %}" class="card-img-top project-img" alt="Logo">
                         <h5 class="card-title">My Portfolio</h5>
@@ -238,9 +307,9 @@
                             <li>Cross-browser compatible design</li>
                         </ul>
                     </div>
-                    </a>
-                    <div class="card-footer"><small>June 2025 - June 2025</small></div>
+                    <div class="card-footer" style="margin-top: auto;"><small>July 2025 - July 2025</small></div>
                 </div>
+               </a>
             </div>
         </div>
     </div>
@@ -311,6 +380,25 @@
             {% endfor %}
         </div>
     </div>
+</section>
+
+<!-- introduction -->
+<section id="introduction" class="video-section py-4">
+  <div class="container">
+    <h2 class="text-center mb-4">My Introduction</h2>
+    <div class="video-wrapper">
+      <!-- Video with thumbnail fallback and mobile-friendly controls -->
+      <video 
+        controls 
+        playsinline
+        poster="{% static 'videos/intro-thumbnail.jpg' %}"
+        class="intro-video"
+      >
+        <source src="{% static 'videos/intro.mp4' %}" type="video/mp4">
+        Your browser doesn't support videos.
+      </video>
+    </div>
+  </div>
 </section>
 
 <!-- Contact -->

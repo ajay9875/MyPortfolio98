@@ -120,8 +120,34 @@ else:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
 
-import sys
+# Add this import if not already present at top
+import os
 
+# Add these MEDIA settings only if they don't exist
+if not hasattr(globals(), 'MEDIA_URL'):
+    MEDIA_URL = '/media/'
+if not hasattr(globals(), 'MEDIA_ROOT'):
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Add to STATICFILES_DIRS only if it exists but doesn't contain your static path
+if 'STATICFILES_DIRS' in globals():
+    static_path = os.path.join(BASE_DIR, 'static')
+    if static_path not in STATICFILES_DIRS:
+        STATICFILES_DIRS.append(static_path)
+else:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# Add these file upload settings only if they don't exist
+if not hasattr(globals(), 'FILE_UPLOAD_MAX_MEMORY_SIZE'):
+    FILE_UPLOAD_MAX_MEMORY_SIZE = 52428800  # 50MB
+if not hasattr(globals(), 'DATA_UPLOAD_MAX_MEMORY_SIZE'):
+    DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800  # 50MB
+
+# Add X-Frame-Options only if not set
+if not hasattr(globals(), 'X_FRAME_OPTIONS'):
+    X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+import sys
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
