@@ -49,7 +49,7 @@ def portfolio(request):
 
         'experience': [
             {
-                'position': 'Web Development Intern',
+                'position': 'Cloud Architecture using AWS',
                 'company': 'Webguru Infosystem',
                 'duration': 'August 2024 - October 2024',
                 'description': 'Learned about creating instances and managing IAM user or root user accessibility using Amazon AWS.'
@@ -61,7 +61,7 @@ def portfolio(request):
                 'degree': 'B.Tech/B.E. in Computer Science',
                 'institution': 'Brainware University, West Bengal',
                 'year': '2020 - 2024',
-                'score': '82.23% & 8.72'
+                'score': '8.72 CGPA(82.23%)'
             },
             {
                 'degree': 'Class XII',
@@ -87,7 +87,7 @@ def portfolio(request):
             'Version Control With Git',
             'AWS Certified Cloud Practitioner (CLF-C02) Cert Prep: 1 Cloud Concepts',
             'All India NCAT 2025',
-            'Codecuezf #20 Coding Challenge'
+            'Codecuezt #20 Coding Challenge'
         ],
         
         'languages': [
