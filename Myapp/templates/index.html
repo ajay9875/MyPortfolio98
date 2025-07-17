@@ -29,9 +29,16 @@
     <!-- Bootstrap CSS -->
 
     <style>
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 50px; /* Adjust based on your navbar height */
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: auto;
         }
+    }
 
         section {
             padding: 60px 0;
@@ -249,7 +256,7 @@
         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
         <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
         <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-        <li class="nav-item"><a class="nav-link" href="#certifications&achivements">Certifications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#certifications&achievements">Certifications</a></li>
         <li class="nav-item"><a class="nav-link" href="#introduction">Introduction Video</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
