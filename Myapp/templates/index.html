@@ -393,6 +393,7 @@
         playsinline
         poster="{% static 'videos/intro-thumbnail.jpg' %}"
         class="intro-video"
+        style="border: groove 2px black;"
       >
         <source src="{% static 'videos/intro.mp4' %}" type="video/mp4">
         Your browser doesn't support videos.
@@ -407,7 +408,9 @@
         <h2 class="mb-4">Contact</h2>
         <p><i class="fas fa-envelope text-primary"></i> <a href="mailto:{{ email }}">{{ email }}</a></p>
         <p><i class="fas fa-phone text-primary"></i> <a href="tel:{{ phone }}">{{ phone }}</a></p>
-        <p><i class="fas fa-map-marker-alt text-primary"></i> {{ address }}</p>
+        <p><i class="fas fa-map-marker-alt text-primary" style="margin-right: 10px;"></i>
+            <a href="{{ address }}" target="_blank" rel="noopener noreferrer">Plot number 35, AMR Township, Balapur, Nadergul, Ranga Reddy, Telangana - 501510</a>
+        </p>
     </div>
 </section>
 

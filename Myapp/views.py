@@ -18,7 +18,7 @@ def portfolio(request):
 
         'email': 'kumar.ajaysah2003@gmail.com',
         'phone': '+91-9875400827',
-        'address': 'Plot number 35, AMR Township, Balapur, Nadergul, Ranga Reddy, Telangana - 501510',
+        'address': "https://www.google.com/maps/place/17%C2%B016'14.7%22N+78%C2%B032'16.5%22E/@17.270735,78.5353368,17z/data=!3m1!4b1!4m4!3m3!8m2!3d17.270735!4d78.5379117?hl=en&entry=ttu&g_ep=EgoyMDI1MDcxMy4wIKXMDSoASAFQAw%3D%3D",
         'birth_date': 'January 2, 2003',
         'gender': 'Male',
         'location': 'Hyderabad',
