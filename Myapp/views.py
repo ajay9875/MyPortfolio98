@@ -3,7 +3,7 @@ from decouple import config
 def portfolio(request):
     context = {
         'name': 'AJAY KUMAR SAH',
-        'title': 'Backend Developer | Python Specialist',
+        'title': "Python Full Stack Developer | Django & Flask | REST APIs | Cloud Deployment",
         'about':
             "I am a passionate backend developer with a strong foundation in Python. "
             "I am actively seeking roles as a Web Developer, Software Developer, or Data Analyst. "
@@ -24,12 +24,12 @@ def portfolio(request):
         'location': 'Hyderabad',
         
         'skills': [
-            {'name': 'Python', 'image': 'skills/python.png'},
+            {'name': 'Python Full Stack Development', 'image': 'skills/python.png'},
             {'name': 'SQL', 'image': 'skills/sql.png'},
             {'name': 'Problem Solving', 'image': 'skills/problem-solving.png'},
             {'name': 'Artificial Intelligence', 'image': 'skills/ai.png'},
-            {'name': 'Flask', 'image': 'skills/flask.png'},
             {'name': 'Django', 'image': 'skills/django.png'},
+            {'name': 'Flask', 'image': 'skills/flask.png'},
             {'name': 'PostgreSQL', 'image': 'skills/postgresql.png'},
             {'name': 'Git', 'image': 'skills/git.png'},
             {'name': 'GitHub', 'image': 'skills/github.png'},
@@ -43,7 +43,7 @@ def portfolio(request):
             {'name': 'HTML', 'image': 'skills/html.png'},
             {'name': 'CSS', 'image': 'skills/css.png'},
             {'name': 'JavaScript', 'image': 'skills/javascript.png'},
-            {'name': 'Bootstrap', 'image': 'skills/bootstrap.png'},
+            {'name': 'BootStrap', 'image': 'skills/bootstrap.png'},
 
         ],
 

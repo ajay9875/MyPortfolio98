@@ -285,6 +285,21 @@
                 <!-- About Text -->
                 <div class="mx-auto" style="max-width: 700px;">
                     <p class="lead text-muted mb-4">{{ about }}</p>
+                    
+                    <!-- Suggestion Line -->
+                    <p class="text-center mt-3">
+                        <small>
+                         For your convenience, I invite you to download my resume for future reference and consideration.
+                        </small>
+                    </p>
+
+                    <!-- Resume Download Button -->
+                    <a href="{% static 'Ajay_Kumar_Sah_Resume.pdf' %}" 
+                    class="btn btn-primary mt-2"
+                    download="Ajay_Kumar_Sah_Resume.pdf">
+                    <i class="fas fa-download me-2"></i>Download Resume
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -331,7 +346,7 @@
         <div class="row justify-content-center">
             <!-- AI Mutual Fund Recommendation -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-              <a href="https://mutual-fund-recommender-amt2.onrender.com/" style="text-decoration: none; color:black;">
+              <a href="https://mutual-fund-recommender-amt2.onrender.com/" target="_blank" style="text-decoration: none; color:black;">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/fund-reco.png' %}" class="card-img-top project-img" alt="Logo">
@@ -351,7 +366,7 @@
 
             <!-- Course Recommendation -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-               <a href="https://king9.pythonanywhere.com/" style="text-decoration: none; color:black;">
+               <a href="https://king9.pythonanywhere.com/" target="_blank" style="text-decoration: none; color:black;">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/course-reco.png' %}" class="card-img-top project-img" alt="Logo">
@@ -372,7 +387,7 @@
 
             <!-- Budget Wisely -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <a href="https://budget-wisely-r167.onrender.com/" style="text-decoration: none; color:black;">
+                  <a href="https://budget-wisely-r167.onrender.com/" target="_blank" style="text-decoration: none; color:black;">
                    <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/budget-wisely.png' %}" class="card-img-top project-img" alt="Logo">
@@ -392,7 +407,7 @@
 
             <!-- TaskCare360 -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <a href="https://taskcare360.onrender.com/" style="text-decoration: none; color:black;">
+                  <a href="https://taskcare360.onrender.com/" target="_blank" style="text-decoration: none; color:black;">
                    <div class="card h-100 shadow-sm">
                     <div class="card-body">
                         <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/task-care.PNG' %}" class="card-img-top project-img" alt="Logo">
