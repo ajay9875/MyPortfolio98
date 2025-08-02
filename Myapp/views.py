@@ -2,6 +2,18 @@ from django.shortcuts import render
 from decouple import config
 def portfolio(request):
     context = {
+        'ticker_items': [
+            "🌟 Python Full Stack Developer | Django & Flask | AWS Certified",
+            "🏆 All India NCAT (Rank 39,394) - Top 3% | B.Tech CSE (AI/ML) - 8.73 CGPA | Backend Specialist", 
+            "💼 Open to Roles: Full-Stack Developer | AI Engineer | Backend Engineer (Django/Flask) | Data Analyst",
+            "📈 AI-Powered Mutual Fund Recommender (Django + Render)",
+            "📈 AI-Powered Course Recommender (Flask + PythonAnywhere)",
+            "📈 TaskCare360 (Flask + Render) | Budget Wisely (Personal Finance App)",
+            "📈 MyPortfolio24x7 (Django + Render)",
+            "🔧 Open-Source Contributor | Django & Flask REST Framework",
+            "🔐 REST API Development | PostgreSQL Optimization"
+        ],
+
         'name': 'AJAY KUMAR SAH',
         'title': "Python Full Stack Developer | Django & Flask | REST APIs | Cloud Deployment",
         'about':
@@ -86,8 +98,6 @@ def portfolio(request):
             'Data Science Internship',
             'Version Control With Git',
             'AWS Certified Cloud Practitioner (CLF-C02) Cert Prep: 1 Cloud Concepts',
-            'All India NCAT 2025',
-            'Codecuezt #20 Coding Challenge'
         ],
         
         'languages': [
@@ -96,9 +106,11 @@ def portfolio(request):
         ],
         
         'achievements': [
+            "All India NCAT 2025 Rank 39,493 (Top 3%)",
+            'Implemented AI/ML solutions in financial and educational domains',
+            'Codecuezt #20 Coding Challenge',
             'Developed multiple full-stack projects during college',
             'Built complete web applications from backend to frontend',
-            'Implemented AI/ML solutions in financial and educational domains'
         ],
 
         'social_links':{
