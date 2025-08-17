@@ -435,19 +435,22 @@
 
     <div class="video-wrapper">
       <!-- Video with thumbnail fallback and mobile-friendly controls -->
-      <!--
       <video 
         controls 
         playsinline
-        poster="{% static 'videos/intro-thumbnail.jpg' %}"
+        poster="{% static 'videos/intro-thumbnail.png' %}"
         class="intro-video"
         style="border: groove 2px black;"
-      >
-        <source src="{% static 'videos/intro.mp4' %}" type="video/mp4">
+       >
+        <source src="{% static 'videos/introduction_video.mp4' %}" type="video/mp4" onerror="handleVideoError()">
         Your browser doesn't support videos.
       </video>
-    -->
-      <p style="text-align: center; color: red;">This video is not available at the moment.</p>
+      
+    <!-- Hidden by default -->
+    <p id="video-error-message" style="text-align: center; color: red; display: none;">
+    This video is not available at the moment.
+    </p>
+
     </div>
   </div>
 </section>
@@ -593,6 +596,38 @@ document.addEventListener('DOMContentLoaded', function () {
     ticker.style.animation = 'ticker 60s linear infinite';
   }, 60000);
 });
+
+// Error message showing while thumbnail or video fails to load
+  function handleVideoError() {
+    const video = document.querySelector('.intro-video');
+    const errorMsg = document.getElementById('video-error-message');
+    
+    // Show error and hide video player
+    errorMsg.style.display = 'block';
+    video.style.display = 'none';
+    
+    // Optional: Log the error for debugging
+    video.addEventListener('error', (e) => {
+      console.error('Video error:', e.target.error.code);
+    }, false);
+  }
+  
+  // Check thumbnail on load
+  document.addEventListener('DOMContentLoaded', () => {
+    const video = document.querySelector('.intro-video');
+    const thumbnail = video.poster;
+    
+    // Verify thumbnail exists
+    fetch(thumbnail)
+      .then(res => {
+        if (!res.ok) throw new Error('Thumbnail missing');
+      })
+      .catch(() => {
+        video.poster = ''; // Remove broken thumbnail
+        handleVideoError(); // Show error message
+      });
+  });
+
 </script>
 </body>
 </html>
