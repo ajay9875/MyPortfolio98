@@ -10,7 +10,7 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=True, cast=bool)
 
 # Hosts configuration
-BASE_ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', 'myportfolio24*7.onrender.com']
+BASE_ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', 'myportfolio98.onrender.com']
 env_hosts = config("ALLOWED_HOSTS", default='').split(',')
 
 ALLOWED_HOSTS = [host.strip() for host in BASE_ALLOWED_HOSTS + env_hosts if host.strip()]
