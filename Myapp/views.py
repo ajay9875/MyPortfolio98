@@ -3,30 +3,34 @@ from decouple import config
 def portfolio(request):
     context = {
         'ticker_items': [
-            "🌟 Python Full Stack Developer | Django & Flask | AWS Certified",
-            "🏆 All India NCAT (Rank 39,394) - Top 3% | B.Tech CSE (AI/ML) - 8.73 CGPA | Backend Specialist", 
-            "💼 Open to Roles: Full-Stack Developer | AI Engineer | Backend Engineer (Django/Flask) | Data Analyst",
-            "📈 AI-Powered Mutual Fund Recommender (Django + Render)",
+            "🏆 All India NCAT (Top 3%) | B.Tech CSE (AI/ML) - 8.73 CGPA", 
+            "🌟 Aspiring Data Analyst | Python, SQL, ETL, EDA & Visualization",
+            "🚀 Seeking Opportunities to Drive Data-Driven Insights",
+            "💻 Backend Development: Python, Django, Flask",
+            "💼 Open to Roles: Data Analyst | Backend Developer",
+            "📈 Projects: AI-Powered Mutual Fund Recommender (Django + Render)",
             "📈 AI-Powered Course Recommender (Flask + PythonAnywhere)",
-            "📈 TaskCare360 (Flask + Render) | Budget Wisely (Personal Finance App)",
-            "📈 MyPortfolio24x7 (Django + Render)",
-            "🔧 Open-Source Contributor | Django & Flask REST Framework",
-            "🔐 REST API Development | PostgreSQL Optimization"
+            "📊 TaskCare360 (Flask + Render) | Budget Wisely (Finance App)",
+            "🌐 MyPortfolio98 (Django + Render)",
+            "🔧 Open-Source Contributor (Django & Flask REST)",
+            "🔐 REST API Development | SQL & PostgreSQL Optimization"
         ],
 
         'name': 'AJAY KUMAR SAH',
-        'title': "Python Full Stack Developer | Django & Flask | REST APIs | Cloud Deployment",
+        'title': "Aspiring Data Analyst | Proficient in Python, ETL, EDA & Data Visualization | Seeking Opportunities to Drive Data-Driven Decisions | Skilled in Backend Development (Python, Django/Flask)",
         'about':
-            "I am a passionate backend developer with a strong foundation in Python. "
-            "I am actively seeking roles as a Web Developer, Software Developer, or Data Analyst. "
-            "My technical expertise includes Python, SQL, Git, MS Office, Data Handling, Artificial Intelligence, "
-            "Object-Oriented Programming, and Data Structures. "
-            "I have successfully built and contributed to several full-stack projects such as "
-            "an AI-Powered Mutual Fund Recommendation System, AI-Based Course Recommender, "
-            "Budget Wisely, TaskCare360, and more. "
-            "I take pride in being a highly determined individual, capable of managing the complete web development lifecycle - "
-            "from backend development and frontend integration to deployment and long-term maintenance. "
-            "I strive to deliver scalable, secure, and user-friendly solutions.",
+                "I am an aspiring Data Analyst with strong expertise in Python, SQL, ETL, Exploratory Data Analysis (EDA), and Data Visualization. "
+                "I am actively seeking roles as a Data Analyst or Backend Developer, where I can apply my analytical and technical skills "
+                "to transform raw data into actionable insights and build data-powered applications. "
+                "My technical expertise includes Python, SQL, Data Handling, Data Structures, Object-Oriented Programming, and visualization tools "
+                "such as Matplotlib, Seaborn, and MS Excel, along with backend development frameworks like Django and Flask. "
+                "I have successfully completed a Data Science Internship at Unified Mentor, where I worked on real-world projects including "
+                "Retail Sales Data Analysis, Financial Data Visualization, and Customer Segmentation & Prediction Models. "
+                "I have also built and contributed to independent projects such as an AI-Powered Mutual Fund Recommendation System, "
+                "AI-Based Course Recommender, Budget Wisely, and TaskCare360, applying both data analysis and backend integration. "
+                "I take pride in being a highly determined individual capable of managing the complete data and development lifecycle — "
+                "from ETL workflows, exploratory analysis, and model building to backend development, deployment, and long-term maintenance. "
+                "I strive to deliver scalable, insightful, and data-driven solutions that support business growth and strategic decision-making.",
 
         'email': 'kumar.ajaysah2003@gmail.com',
         'phone': '+91-9875400827',

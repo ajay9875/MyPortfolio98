@@ -206,13 +206,13 @@ top: 55px;
 left: 0;
 right: 0;
 z-index: 10000;
-background: linear-gradient(to right, #000428, #014477);
-color: white;
 padding: 2px 0;
 font-family: 'Roboto', sans-serif;
 overflow: hidden;
-border-top: 2px solid #ff0000;
-border-bottom: 2px solid #ff0000;
+background: linear-gradient(to right, #1a1a1a, #2d2d2d); /* Dark gray gradient */
+color: #ffffff; /* Pure white */
+border-top: 1px solid #ffcc00; /* Amber/Yellow accent */
+border-bottom: 1px solid #ffcc00;
 }
 
 .ticker-header {
