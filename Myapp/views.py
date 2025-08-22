@@ -4,7 +4,7 @@ def portfolio(request):
     context = {
         'ticker_items': [
             "🏆 All India NCAT (Top 3%) | B.Tech CSE (AI/ML) - 8.73 CGPA", 
-            "🌟 Aspiring Data Analyst | Python, SQL, ETL, EDA & Visualization",
+            "🌟 Aspiring Data Analyst | Python, SQL, ETL, EDA & Visualization(Tableau, Power BI) ",
             "🚀 Seeking Opportunities to Drive Data-Driven Insights",
             "💻 Backend Development: Python, Django, Flask",
             "💼 Open to Roles: Data Analyst | Backend Developer",
@@ -17,7 +17,7 @@ def portfolio(request):
         ],
 
         'name': 'AJAY KUMAR SAH',
-        'title': "Aspiring Data Analyst | Proficient in Python, ETL, EDA & Data Visualization | Seeking Opportunities to Drive Data-Driven Decisions | Skilled in Backend Development (Python, Django/Flask)",
+        'title': "Aspiring Data Analyst | Proficient in Data Analytics, Python, ETL, EDA & Data Visualization (Tableau, Power BI) | Seeking Opportunities to Drive Data-Driven Decisions | Skilled in Backend Development (Python, Django/Flask)",
         'about':
                 "I am an aspiring Data Analyst with strong expertise in Python, SQL, ETL, Exploratory Data Analysis (EDA), and Data Visualization. "
                 "I am actively seeking roles as a Data Analyst or Backend Developer, where I can apply my analytical and technical skills "
