@@ -68,7 +68,7 @@ def portfolio(request):
                 'position': 'Cloud Architecture using AWS',
                 'company': 'Webguru Infosystem',
                 'duration': 'August 2024 - October 2024',
-                'description': 'Learned about creating instances and managing IAM user or root user accessibility using Amazon AWS.'
+                'description': 'Gained hands-on experience in provisioning EC2 instances and managing IAM user permissions and root access controls in Amazon AWS.'
             },
         ],
         
