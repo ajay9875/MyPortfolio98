@@ -40,10 +40,12 @@ def portfolio(request):
         'location': 'Hyderabad',
         
         'skills': [
-            {'name': 'Python Full Stack Development', 'image': 'skills/python.png'},
+            {'name': 'Python', 'image': 'skills/python.png'},
             {'name': 'SQL', 'image': 'skills/sql.png'},
             {'name': 'Problem Solving', 'image': 'skills/problem-solving.png'},
-            {'name': 'Artificial Intelligence', 'image': 'skills/ai.png'},
+            {'name': 'Large Language Models', 'image': 'skills/large.png'},
+            {'name': 'Prompt Engineering', 'image': 'skills/prompt.png'},
+            {'name': 'Natural Language Processing', 'image': 'skills/natural.png'},
             {'name': 'Django', 'image': 'skills/django.png'},
             {'name': 'Flask', 'image': 'skills/flask.png'},
             {'name': 'PostgreSQL', 'image': 'skills/postgresql.png'},
