@@ -422,13 +422,11 @@
     </div>
 </section>
 
-<!-- introduction -->
+<!-- Introduction Video Section -->
 <section id="introduction" class="video-section py-4">
   <div class="container">
-        <div class="d-flex flex-column align-items-center mt-4">
-            <div class="d-flex justify-content-center flex-wrap mb-2">
-                <!-- Social Media -->
-                <div class="text-center mx-3 mb-3">
+        <div class="d-flex justify-content-center flex-wrap mb-2">
+            <div class="text-center mx-3 mb-3">
                     <a href="{{ social_links.github }}" target="_blank" class="d-block">
                         <i class="fab fa-github fa-1x"></i>
                         <span class="mt-1 d-block small">GitHub</span>
@@ -463,7 +461,6 @@
                     </a>
                 </div>
 
-                <!-- Other Services -->
                 <div class="text-center mx-3 mb-3">
                     <a href="https://wa.me/{{ social_links.whatsapp }}" target="_blank" class="d-block">
                         <i class="fab fa-whatsapp fa-1x"></i>
@@ -478,11 +475,83 @@
                     </a>
                 </div>
             </div>
-                <p class="lead mb-3" style="text-align: center; font-size: large;">Explore and connect via my professional profiles:</p>
         </div>
 
+            <div class="d-flex flex-column align-items-center">
+                <div class="video-wrapper">
+                    <!-- YouTube video embedded using iframe -->
+                    <div class="youtube-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/ntNo-xdM9gk" 
+                            title="Professional Introduction" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <p class="video-caption">Professional introduction video</p>
+            </div>
+</section>
+
+<!-- introduction -->
+<!--
+<section id="introduction" class="video-section py-4">
+  <div class="container">
+        <div class="d-flex justify-content-center flex-wrap mb-2">
+            <div class="text-center mx-3 mb-3">
+                    <a href="{{ social_links.github }}" target="_blank" class="d-block">
+                        <i class="fab fa-github fa-1x"></i>
+                        <span class="mt-1 d-block small">GitHub</span>
+                    </a>
+                </div>
+                
+                <div class="text-center mx-3 mb-3">
+                    <a href="{{ social_links.linkedin }}" target="_blank" class="d-block">
+                        <i class="fab fa-linkedin fa-1x"></i>
+                        <span class="mt-1 d-block small">LinkedIn</span>
+                    </a>
+                </div>
+                
+                <div class="text-center mx-3 mb-3">
+                    <a href="{{ social_links.naukri }}" target="_blank" class="d-block">
+                        <img src="{% static 'media/naukri.png' %}" alt="naukri" style="width:15px; height:15px; border-radius: 100%;">
+                        <span class="mt-1 d-block small">Naukri</span>
+                    </a>
+                </div>
+                
+                <div class="text-center mx-3 mb-3">
+                    <a href="{{ social_links.hackerrank }}" target="_blank" class="d-block">
+                        <img src="{% static 'media/hackerrank.png' %}" alt="hackerrank" style="width:15px; height:15px; border-radius: 100%;">
+                        <span class="mt-1 d-block small">HackerRank</span>
+                    </a>
+                </div>
+                
+                <div class="text-center mx-3 mb-3">
+                    <a href="{{ social_links.leetcode }}" target="_blank" class="d-block">
+                        <img  src="{% static 'media/leetcode.png' %}" alt="leetcode" style="width:15px; height:15px; border-radius: 100%;">
+                        <span class="mt-1 d-block small">LeetCode</span>
+                    </a>
+                </div>
+
+                <div class="text-center mx-3 mb-3">
+                    <a href="https://wa.me/{{ social_links.whatsapp }}" target="_blank" class="d-block">
+                        <i class="fab fa-whatsapp fa-1x"></i>
+                        <span class="mt-1 d-block small">WhatsApp</span>
+                    </a>
+                </div>
+                
+                <div class="text-center mx-3 mb-3">
+                    <a href="https://instagram.com/{{ social_links.instagram }}" target="_blank" class="d-block">
+                        <i class="fab fa-instagram fa-1x"></i>
+                        <span class="mt-1 d-block small">Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+          <div class="d-flex flex-column align-items-center mt-4">
     <div class="video-wrapper">
-      <!-- Video with thumbnail fallback and mobile-friendly controls -->
       <video 
         controls 
         playsinline
@@ -493,15 +562,23 @@
         <source src="{% static 'videos/introduction_video.mp4' %}" type="video/mp4" onerror="handleVideoError()">
         Your browser doesn't support videos.
       </video>
-      
-    <!-- Hidden by default -->
+
     <p id="video-error-message" style="text-align: center; color: red; display: none;">
     This video is not available at the moment.
     </p>
-
+    </div>
+       >
+        <source src="{% static 'videos/introduction_video.mp4' %}" type="video/mp4" onerror="handleVideoError()">
+        Your browser doesn't support videos.
+      </video>
+      
+    <p id="video-error-message" style="text-align: center; color: red; display: none;">
+    This video is not available at the moment.
+    </p>
     </div>
   </div>
 </section>
+-->
 
 <!-- Languages Section -->
 <section class="bg-light py-5" data-aos="fade-up">
@@ -641,7 +718,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setInterval(() => {
     ticker.style.animation = 'none';
     ticker.offsetHeight; /* Trigger reflow */
-    ticker.style.animation = 'ticker 60s linear infinite';
+    ticker.style.animation = 'ticker 300s linear infinite';
   }, 60000);
 });
 
@@ -675,6 +752,38 @@ document.addEventListener('DOMContentLoaded', function () {
         handleVideoError(); // Show error message
       });
   });
+          // Simple error handling for the video
+// Enhanced error handling for YouTube iframe
+function handleVideoError() {
+  const errorMsg = document.getElementById('video-error-message');
+  if (errorMsg) {
+    errorMsg.style.display = 'block';
+    errorMsg.textContent = 'YouTube video is not available at the moment.';
+  }
+  console.error('YouTube video failed to load');
+}
+
+// Check if YouTube iframe loaded successfully
+document.addEventListener('DOMContentLoaded', function() {
+  const iframe = document.querySelector('iframe[src*="youtube"]');
+  
+  if (iframe) {
+    iframe.onload = function() {
+      console.log('YouTube video loaded successfully');
+    };
+    
+    iframe.onerror = function() {
+      handleVideoError();
+    };
+    
+    // Fallback: if iframe doesn't load within 10 seconds
+    setTimeout(function() {
+      if (iframe && !iframe.contentWindow) {
+        handleVideoError();
+      }
+    }, 10000);
+  }
+});
 
 </script>
 </body>

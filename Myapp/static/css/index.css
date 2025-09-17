@@ -222,9 +222,10 @@ top: 0;
 height: 100%;
 display: flex;
 align-items: center;
-background: #ff0000;
+background: red;
 padding: 0 15px;
 z-index: 2;
+color: black;
 }
 
 .breaking-badge {
@@ -245,7 +246,7 @@ position: relative;
 display: inline-block;
 white-space: nowrap;
 padding-right: 100%;
-animation: ticker 60s linear infinite;
+animation: ticker 300s linear infinite;
 will-change: transform; /* Smooth rendering */
 }
 
@@ -276,5 +277,9 @@ position: absolute;
 left: 100%;
 padding-left: 30px;
 white-space: nowrap;
+}
+/* Pause ticker on hover */
+.ticker-wrap:hover .ticker-move {
+    animation-play-state: paused;
 }
 /* JavaScript Required for Dynamic Content */

@@ -67,18 +67,18 @@ def portfolio(request):
                 'degree': 'B.Tech/B.E. in Computer Science',
                 'institution': 'Brainware University, West Bengal',
                 'year': '2021 - 2025',
-                'score': '82.23% /  8.73 CGPA'
+                'score': '8.73 CGPA'
             },
             {
                 'degree': 'Class XII',
                 'institution': 'Bihar Board (Hindi Medium)',
-                'year': '2020',
+                'year': '2018 - 2020',
                 'score': '66.6%'
             },
             {
                 'degree': 'Class X',
                 'institution': 'Bihar Board (Hindi Medium)',
-                'year': '2018',
+                'year': '2017 - 2018',
                 'score': '64.2%'
             },
         ],
