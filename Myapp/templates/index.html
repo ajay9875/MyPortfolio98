@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,7 +18,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
@@ -28,455 +29,512 @@
     <link rel="icon" type="image/x-icon" href="{% static 'self-img.png' %}" style="border-radius: 100%;">
     <!-- CSS Link -->
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    {% csrf_token %}
 
 </head>
+
 <body>
-<!-- Navbar -->
-<!-- Required in <head> -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Required in <head> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
-  <div class="container">
-    <a class="navbar-brand" href="/#top">MyPortfolio24x7</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand" href="/#top">AJAY KUMAR SAH</a>
+            <button class="navbar-toggler" type="button" data-bs-target="#navbarContent" aria-controls="navbarContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <div class="collapse navbar-collapse" id="navbarContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-        <li class="nav-item"><a class="nav-link" href="#certifications&achievements">Certifications & Achievements</a></li>
-        <li class="nav-item"><a class="nav-link" href="#introduction">Introduction Video</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#top">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications&achievements">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#introduction">Introduction Video</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<!-- News Ticker to Show Important Updates -->
-<div class="news-ticker-container">
-  <div class="ticker-header">
-    <span class="breaking-badge">UPDATES</span>
-  </div>
-  <div class="ticker-wrap">
-    <div class="ticker-move">
-      {% for item in ticker_items %}
-        <div class="ticker-item">{{ item }}</div>
-      {% endfor %}
-    </div>
-  </div>
-</div>
-
-<!-- About -->
-<!-- About Section -->
-<section id="about" class="py-5 bg-light  mb-5" data-aos="fade-up">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <!-- Profile Image -->
-                <div class="mb-4">
-                    <img src="{% static 'self-img.png' %}" 
-                         class="rounded-circle shadow border border-3 border-white" 
-                         style="width: 120px; height: 120px; object-fit: cover;" 
-                         alt="Profile Picture">
-                </div>
-                
-                <!-- Name & Title -->
-                <h1 class="display-5 fw-bold mb-3">{{ name }}</h1>
-                <h2 class="h5 text-primary mb-4">{{ title }}</h2>
-                
-                <!-- About Text -->
-                <div class="mx-auto" style="max-width: 700px;">
-                    <p class="lead text-muted mb-4">{{ about }}</p>
-                    
-                    <!-- Suggestion Line -->
-                    <p class="text-center mt-3">
-                        <small>
-                          For your convenience, you are kindly invited to download my resume for your reference and consideration.                        
-                        </small>
-                    </p>
-
-                    <!-- Resume Download Button -->
-                    <a href="{% static 'Ajay_Kumar_Sah_Resume.pdf' %}" 
-                    class="btn btn-primary mt-2"
-                    download="Ajay_Kumar_Sah_Resume.pdf">
-                    <i class="fas fa-download me-2"></i>Download Resume
-                    </a>
-
-                </div>
+    <!-- News Ticker to Show Important Updates -->
+    <div class="news-ticker-container">
+        <div class="ticker-header">
+            <span class="breaking-badge">UPDATES</span>
+        </div>
+        <div class="ticker-wrap">
+            <div class="ticker-move">
+                {% for item in ticker_items %}
+                <div class="ticker-item">{{ item }}</div>
+                {% endfor %}
             </div>
         </div>
     </div>
-</section>
 
-<!-- Skills -->
-<!-- Skills Section -->
-<section id="skills" class="bg-light py-5" data-aos="fade-up">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">Technical Skills</h2>
-            <p class="text-muted">Tools and technologies I work with</p>
-        </div>
-        
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <div class="card shadow-sm border-0">
-                    <ul class="list-group list-group-flush">
-                        {% for skill in skills %}
-                        <li class="list-group-item d-flex align-items-center gap-3 py-3 border-bottom">
-                            {% with first_word=skill.name.split.0|lower %}
-                            <img style="width:30px; height:30px; border-radius: 100%; object-fit: contain;" 
-                                 src="{% static 'skills/'|add:first_word|add:'.png' %}" 
-                                 class="card-img-top project-img" 
-                                 alt="{{ skill.name }} logo">
-                            {% endwith %}
-                            <span class="fw-medium">
-                                {{ skill.name }}
-                            </span>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+    <!-- Visitor Counter -->
+    <div class="container mt-3">
+        <div class="visitor-counter text-start">
+            {% if visitor_count %}
+            <h4 id="visitor-count" class="fw-bold mb-0">{{ visitor_count }}</h4>
+            {% else %}
+            <h4 id="visitor-count-display" class="fw-bold mb-0">0</h4>
+            {% endif %}
+            <small class="text-muted">VISITORS</small>
         </div>
     </div>
-</section>
 
-<!-- Projects Section -->
-<section id="projects" style="margin-top: 50px;" class="bg-light-alt py-5" data-aos="fade-up">
-    <div class="container">
-        <h2 class="text-center mb-4">Projects</h2>
-        <div class="row justify-content-center">
-            <!-- Revolt Motors Voice Assistant -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <a href="https://revvoicechatboat09.onrender.com/" target="_blank" style="text-decoration: none; color: black;">
-                <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/revolt-assistant.png' %}" class="card-img-top project-img" alt="Revolt Voice Assistant Logo">
-                    <h5 class="card-title">Revolt Motors Voice Assistant</h5>
-                    <p class="card-text">AI-powered voice assistant for Revolt Motors with real-time audio processing and context-aware responses.</p>
-                    <small class="text-muted">Node.js, Google Gemini API, Socket.IO, WebSockets</small>
-                    <ul class="mt-2 ps-3">
-                    <li>Real-time audio processing with WebSocket connections</li>
-                    <li>Context-aware responses using Google Gemini API</li>
-                    <li>Bidirectional communication with Socket.IO</li>
-                    <li>File upload handling with Multer middleware</li>
-                    </ul>
-                </div>
-                <div class="card-footer" style="margin-top: auto;">
-                    <small>August 2025 - August 2025</small>
-                </div>
-                </div>
-            </a>
-            </div>
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light  mb-5" data-aos="fade-up">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <!-- Profile Image -->
+                    <div class="mb-4">
+                        <img src="{% static 'self-img.png' %}"
+                            class="rounded-circle shadow border border-3 border-white"
+                            style="width: 120px; height: 120px; object-fit: cover;" alt="Profile Picture">
+                    </div>
 
-            <!-- Document Processor & Q&A Assistant -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <a href="https://github.com/ajay9875/intellidocanalyzer09" target="_blank" style="text-decoration: none; color: black;">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/document_processor.png' %}" class="card-img-top project-img" alt="Document Processor Logo">
-                        <h5 class="card-title">Intelli Document Q&A Assistant</h5>
-                        <p class="card-text">
-                            Developed to process various document formats like PDF, Word, Excel, and PowerPoint. It uses Natural Language Understanding (NLU) and Prompt Engineering to find relevant information within the documents, which is then passed to a Large Language Model (LLM) via the Gemini API for Generative AI to provide a final, well-structured answer.
+                    <!-- Name & Title -->
+                    <h1 class="display-5 fw-bold mb-3">{{ name }}</h1>
+                    <h2 class="h5 text-primary mb-4">{{ title }}</h2>
+
+                    <!-- About Text -->
+                    <div class="mx-auto" style="max-width: 700px;">
+                        <p class="lead text-muted mb-4">{{ about }}</p>
+
+                        <!-- Suggestion Line -->
+                        <p class="text-center mt-3">
+                            <small>
+                                For your convenience, you are kindly invited to download my resume for your reference
+                                and consideration.
+                            </small>
                         </p>
-                        <small class="text-muted">Python, Django, Google Gemini API, FAISS, Sentence Transformers</small>
-                        <ul class="mt-2 ps-3">
-                            <li>Multi-user support with session-based document storage</li>
-                            <li>Efficient document embedding and similarity search with FAISS</li>
-                            <li>Generative AI powered by Google Gemini API</li>
-                            <li>Supports multiple document types (.pdf, .docx, .xlsx, .pptx)</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer" style="margin-top: auto;">
-                        <small>August 2025 - September 2025</small>
-                    </div>
-                </div>
-            </a>
-        </div>
 
-            <!-- AI Mutual Fund Recommendation -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-              <a href="https://mutual-fund-recommender-amt2.onrender.com/" target="_blank" style="text-decoration: none; color:black;">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/fund-reco.png' %}" class="card-img-top project-img" alt="Logo">
-                        <h5 class="card-title">AI-Powered Mutual Fund Recommendation System</h5>
-                        <p class="card-text">Personalized mutual fund recommendations based on investor goals, risk profile, and investment horizon.</p>
-                        <small class="text-muted">Python, AI/ML, Financial APIs, Data Analysis</small>
-                        <ul class="mt-2 ps-3">
-                            <li>Hybrid filtering approach (collaborative + content-based)</li>
-                            <li>Real-time market analysis from financial sources</li>
-                            <li>Secure & compliant with financial regulations</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer" style="margin-top: auto;"><small>August 2024 - May 2025</small></div>
-                </div>
-              </a>
-            </div>
+                        <!-- Resume Download Button -->
+                        <a href="{% static 'Ajay_Kumar_Sah_Resume.pdf' %}" class="btn btn-primary mt-2"
+                            download="Ajay_Kumar_Sah_Resume.pdf">
+                            <i class="fas fa-download me-2"></i>Download Resume
+                        </a>
 
-            <!-- Course Recommendation -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-               <a href="https://king9.pythonanywhere.com/" target="_blank" style="text-decoration: none; color:black;">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/course-reco.png' %}" class="card-img-top project-img" alt="Logo">
-
-                        <h5 class="card-title">AI-Powered Online Course Recommendation System</h5>
-                        <p class="card-text">Suggests relevant courses based on user interests using AI by computing similarity scores.</p>
-                        <small class="text-muted">AI, Python, HTML, CSS, JavaScript</small>
-                        <ul class="mt-2 ps-3">
-                            <li>Real-time input handling</li>
-                            <li>Dynamic recommendation display</li>
-                            <li>Responsive user interface</li>
-                        </ul>
                     </div>
-                    <div class="card-footer" style="margin-top: auto;"><small>July 2024 - September 2024</small></div>
                 </div>
-               </a>
-            </div> 
-
-            <!-- Budget Wisely -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <a href="https://buudgetwisely24x7.onrender.com/" target="_blank" style="text-decoration: none; color:black;">
-                   <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/budget-wisely.png' %}" class="card-img-top project-img" alt="Logo">
-                        <h5 class="card-title">Budget Wisely</h5>
-                        <p class="card-text">A powerful web application designed to help users take full control of their finances on a monthly or yearly basis.</p>
-                        <small class="text-muted">Python, Flask, HTML, CSS, JavaScript, Data Visualization</small>
-                        <ul class="mt-2 ps-3">
-                            <li>Visual insights through dynamic pie charts and bar graphs</li>
-                            <li>Helps identify overspending areas</li>
-                            <li>Data-driven approach for smarter financial decisions</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer" style="margin-top: auto;"><small>February 2025 - April 2025</small></div>
-                </div>
-               </a>
-            </div>
-
-            <!-- TaskCare360 -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <a href="https://taskcare360.onrender.com/" target="_blank" style="text-decoration: none; color:black;">
-                   <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/task-care.PNG' %}" class="card-img-top project-img" alt="Logo">
-                        <h5 class="card-title">TaskCare360</h5>
-                        <p class="card-text">A user-friendly ToDo web application that enables users to efficiently manage their daily tasks.</p>
-                        <small class="text-muted">Flask, HTML, CSS, JavaScript, SMTP</small>
-                        <ul class="mt-2 ps-3">
-                            <li>Automated daily email reminders for pending tasks</li>
-                            <li>Secure password reset functionality with OTP</li>
-                            <li>Responsive and intuitive interface</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer" style="margin-top: auto;"><small>December 2024 - February 2025</small></div>
-                </div>
-               </a>
-            </div>
-
-            <!-- AI-Travel Guide -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <a href="https://ai-travel-guide09.onrender.com/" target="_blank" style="text-decoration: none; color:black;">
-                   <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'projects/ai-travel-guide.png' %}" class="card-img-top project-img" alt="Logo">
-                        <h5 class="card-title">AI-Travel Guide</h5>
-                        <p class="card-text">An intelligent travel companion that provides personalized recommendations and itineraries.</p>
-                        <small class="text-muted">Flask, HTML, CSS, JavaScript, Machine Learning</small>
-                        <ul class="mt-2 ps-3">
-                            <li>Personalized travel recommendations based on user preferences</li>
-                            <li>Dynamic itinerary generation with real-time updates</li>
-                            <li>Integration with popular travel APIs for accurate information</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer" style="margin-top: auto;"><small>September 2025 - October 2025</small></div>
-                </div>
-               </a>
-            </div>
-            
-            <!-- My Portfolio -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <a href="https://myportfolio98.onrender.com/" style="text-decoration: none; color:black;">
-                   <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;" src="{% static 'self-img.png' %}" class="card-img-top project-img" alt="Logo">
-                        <h5 class="card-title">MyPortfolio24x7</h5>
-                        <p class="card-text">A user-friendly Portfolio to show all details about, education, projects and more.</p>
-                        <small class="text-muted">Django, HTML, CSS, JavaScript, Bootstrap</small>
-                        <ul class="mt-2 ps-3">
-                            <li>Shows all details in a proper manner</li>
-                            <li>Easy to navigate with intuitive buttons</li>
-                            <li>Responsive and intuitive interface</li>
-                            <li>Dynamically loads content for faster performance</li>
-                            <li>Cross-browser compatible design</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer" style="margin-top: auto;"><small>July 2025 - July 2025</small></div>
-                </div>
-               </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Experience -->
-<section id="experience" class="py-5 bg-white" data-aos="fade-up">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Professional Experience</h2>
-            <p class="text-muted">My career journey and key roles</p>
+    <!-- Skills -->
+    <!-- Skills Section -->
+    <section id="skills" class="bg-light py-5" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Technical Skills</h2>
+                <p class="text-muted">Tools and technologies I work with</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <div class="card shadow-sm border-0">
+                        <ul class="list-group list-group-flush">
+                            {% for skill in skills %}
+                            <li class="list-group-item d-flex align-items-center gap-3 py-3 border-bottom">
+                                {% with first_word=skill.name.split.0|lower %}
+                                <img style="width:30px; height:30px; border-radius: 100%; object-fit: contain;"
+                                    src="{% static 'skills/'|add:first_word|add:'.png' %}"
+                                    class="card-img-top project-img" alt="{{ skill.name }} logo">
+                                {% endwith %}
+                                <span class="fw-medium">
+                                    {{ skill.name }}
+                                </span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="row g-4 justify-content-center">
-            {% for exp in experience %}
-            <div class="col-lg-8">
-                <div class="card shadow-sm h-100 border-0">
-                    <div class="card-body p-4">
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
-                            <div>
-                                <h4 class="h5 fw-bold mb-1">{{ exp.position }}</h4>
-                                <h5 class="h6 text-muted">{{ exp.company }}</h5>
+    <!-- Projects Section -->
+    <section id="projects" style="margin-top: 50px;" class="bg-light-alt py-5" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-center mb-4">Projects</h2>
+            <div class="row justify-content-center">
+                <!-- Revolt Motors Voice Assistant -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="https://revvoicechatboat09.onrender.com/" target="_blank"
+                        style="text-decoration: none; color: black;">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;"
+                                    src="{% static 'projects/revolt-assistant.png' %}" class="card-img-top project-img"
+                                    alt="Revolt Voice Assistant Logo">
+                                <h5 class="card-title">Revolt Motors Voice Assistant</h5>
+                                <p class="card-text">AI-powered voice assistant for Revolt Motors with real-time audio
+                                    processing and context-aware responses.</p>
+                                <small class="text-muted">Node.js, Google Gemini API, Socket.IO, WebSockets</small>
+                                <ul class="mt-2 ps-3">
+                                    <li>Real-time audio processing with WebSocket connections</li>
+                                    <li>Context-aware responses using Google Gemini API</li>
+                                    <li>Bidirectional communication with Socket.IO</li>
+                                    <li>File upload handling with Multer middleware</li>
+                                </ul>
                             </div>
-                            <span class="badge bg-primary bg-opacity-10 text-primary mt-2 mt-md-0">{{ exp.duration }}</span>
+                            <div class="card-footer" style="margin-top: auto;">
+                                <small>August 2025 - August 2025</small>
+                            </div>
                         </div>
-                        <p class="mb-0">{{ exp.description }}</p>
-                    </div>
+                    </a>
                 </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
 
-<!-- Education -->
-<section id="education" class="py-5 bg-light-alt" data-aos="fade-up">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Education</h2>
-            <p class="text-muted">My academic qualifications</p>
-        </div>
-
-        <div class="row g-4">
-            {% for edu in education %}
-            <div class="col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body p-4 text-center">
-                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                            <i class="fas fa-graduation-cap fs-4"></i>
+                <!-- Document Processor & Q&A Assistant -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="https://github.com/ajay9875/intellidocanalyzer09" target="_blank"
+                        style="text-decoration: none; color: black;">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;"
+                                    src="{% static 'projects/document_processor.png' %}"
+                                    class="card-img-top project-img" alt="Document Processor Logo">
+                                <h5 class="card-title">Intelli Document Q&A Assistant</h5>
+                                <p class="card-text">
+                                    Developed to process various document formats like PDF, Word, Excel, and PowerPoint.
+                                    It uses Natural Language Understanding (NLU) and Prompt Engineering to find relevant
+                                    information within the documents, which is then passed to a Large Language Model
+                                    (LLM) via the Gemini API for Generative AI to provide a final, well-structured
+                                    answer.
+                                </p>
+                                <small class="text-muted">Python, Django, Google Gemini API, FAISS, Sentence
+                                    Transformers</small>
+                                <ul class="mt-2 ps-3">
+                                    <li>Multi-user support with session-based document storage</li>
+                                    <li>Efficient document embedding and similarity search with FAISS</li>
+                                    <li>Generative AI powered by Google Gemini API</li>
+                                    <li>Supports multiple document types (.pdf, .docx, .xlsx, .pptx)</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer" style="margin-top: auto;">
+                                <small>August 2025 - September 2025</small>
+                            </div>
                         </div>
-                        <h4 class="h5 fw-bold">{{ edu.degree }}</h4>
-                        <h5 class="h6 text-muted mb-3">{{ edu.institution }}</h5>
-                        <div class="d-flex justify-content-between small">
-                            <span class="text-primary">{{ edu.year }}</span>
-                            <span class="text-dark fw-bold">{{ edu.score }}</span>
+                    </a>
+                </div>
+
+                <!-- AI Mutual Fund Recommendation -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="https://mutual-fund-recommender-amt2.onrender.com/" target="_blank"
+                        style="text-decoration: none; color:black;">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;"
+                                    src="{% static 'projects/fund-reco.png' %}" class="card-img-top project-img"
+                                    alt="Logo">
+                                <h5 class="card-title">AI-Powered Mutual Fund Recommendation System</h5>
+                                <p class="card-text">Personalized mutual fund recommendations based on investor goals,
+                                    risk profile, and investment horizon.</p>
+                                <small class="text-muted">Python, AI/ML, Financial APIs, Data Analysis</small>
+                                <ul class="mt-2 ps-3">
+                                    <li>Hybrid filtering approach (collaborative + content-based)</li>
+                                    <li>Real-time market analysis from financial sources</li>
+                                    <li>Secure & compliant with financial regulations</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer" style="margin-top: auto;"><small>August 2024 - May 2025</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Course Recommendation -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="https://king9.pythonanywhere.com/" target="_blank"
+                        style="text-decoration: none; color:black;">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;"
+                                    src="{% static 'projects/course-reco.png' %}" class="card-img-top project-img"
+                                    alt="Logo">
+
+                                <h5 class="card-title">AI-Powered Online Course Recommendation System</h5>
+                                <p class="card-text">Suggests relevant courses based on user interests using AI by
+                                    computing similarity scores.</p>
+                                <small class="text-muted">AI, Python, HTML, CSS, JavaScript</small>
+                                <ul class="mt-2 ps-3">
+                                    <li>Real-time input handling</li>
+                                    <li>Dynamic recommendation display</li>
+                                    <li>Responsive user interface</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer" style="margin-top: auto;"><small>July 2024 - September 2024</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Budget Wisely -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="https://buudgetwisely24x7.onrender.com/" target="_blank"
+                        style="text-decoration: none; color:black;">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;"
+                                    src="{% static 'projects/budget-wisely.png' %}" class="card-img-top project-img"
+                                    alt="Logo">
+                                <h5 class="card-title">Budget Wisely</h5>
+                                <p class="card-text">A powerful web application designed to help users take full control
+                                    of their finances on a monthly or yearly basis.</p>
+                                <small class="text-muted">Python, Flask, HTML, CSS, JavaScript, Data
+                                    Visualization</small>
+                                <ul class="mt-2 ps-3">
+                                    <li>Visual insights through dynamic pie charts and bar graphs</li>
+                                    <li>Helps identify overspending areas</li>
+                                    <li>Data-driven approach for smarter financial decisions</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer" style="margin-top: auto;"><small>February 2025 - April 2025</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- TaskCare360 -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="https://taskcare360.onrender.com/" target="_blank"
+                        style="text-decoration: none; color:black;">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;"
+                                    src="{% static 'projects/task-care.PNG' %}" class="card-img-top project-img"
+                                    alt="Logo">
+                                <h5 class="card-title">TaskCare360</h5>
+                                <p class="card-text">A user-friendly ToDo web application that enables users to
+                                    efficiently manage their daily tasks.</p>
+                                <small class="text-muted">Flask, HTML, CSS, JavaScript, SMTP</small>
+                                <ul class="mt-2 ps-3">
+                                    <li>Automated daily email reminders for pending tasks</li>
+                                    <li>Secure password reset functionality with OTP</li>
+                                    <li>Responsive and intuitive interface</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer" style="margin-top: auto;"><small>December 2024 - February
+                                    2025</small></div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- AI-Travel Guide -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="https://ai-travel-guide09.onrender.com/" target="_blank"
+                        style="text-decoration: none; color:black;">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;"
+                                    src="{% static 'projects/ai-travel-guide.png' %}" class="card-img-top project-img"
+                                    alt="Logo">
+                                <h5 class="card-title">AI-Travel Guide</h5>
+                                <p class="card-text">An intelligent travel companion that provides personalized
+                                    recommendations and itineraries.</p>
+                                <small class="text-muted">Flask, HTML, CSS, JavaScript, Machine Learning</small>
+                                <ul class="mt-2 ps-3">
+                                    <li>Personalized travel recommendations based on user preferences</li>
+                                    <li>Dynamic itinerary generation with real-time updates</li>
+                                    <li>Integration with popular travel APIs for accurate information</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer" style="margin-top: auto;"><small>September 2025 - October
+                                    2025</small></div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- My Portfolio -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="https://myportfolio98.onrender.com/" style="text-decoration: none; color:black;">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <img style="width:50px; height:50px; margin-bottom: 10px; border-radius: 100%;"
+                                    src="{% static 'self-img.png' %}" class="card-img-top project-img" alt="Logo">
+                                <h5 class="card-title">MyPortfolio24x7</h5>
+                                <p class="card-text">A user-friendly Portfolio to show all details about, education,
+                                    projects and more.</p>
+                                <small class="text-muted">Django, HTML, CSS, JavaScript, Bootstrap</small>
+                                <ul class="mt-2 ps-3">
+                                    <li>Shows all details in a proper manner</li>
+                                    <li>Easy to navigate with intuitive buttons</li>
+                                    <li>Responsive and intuitive interface</li>
+                                    <li>Dynamically loads content for faster performance</li>
+                                    <li>Cross-browser compatible design</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer" style="margin-top: auto;"><small>July 2025 - July 2025</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-5 bg-white" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Professional Experience</h2>
+                <p class="text-muted">My career journey and key roles</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                {% for exp in experience %}
+                <div class="col-lg-8">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-body p-4">
+                            <div
+                                class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+                                <div>
+                                    <h4 class="h5 fw-bold mb-1">{{ exp.position }}</h4>
+                                    <h5 class="h6 text-muted">{{ exp.company }}</h5>
+                                </div>
+                                <span class="badge bg-primary bg-opacity-10 text-primary mt-2 mt-md-0">{{ exp.duration
+                                    }}</span>
+                            </div>
+                            <p class="mb-0">{{ exp.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="py-5 bg-light-alt" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Education</h2>
+                <p class="text-muted">My academic qualifications</p>
+            </div>
+
+            <div class="row g-4">
+                {% for edu in education %}
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                                style="width: 60px; height: 60px;">
+                                <i class="fas fa-graduation-cap fs-4"></i>
+                            </div>
+                            <h4 class="h5 fw-bold">{{ edu.degree }}</h4>
+                            <h5 class="h6 text-muted mb-3">{{ edu.institution }}</h5>
+                            <div class="d-flex justify-content-between small">
+                                <span class="text-primary">{{ edu.year }}</span>
+                                <span class="text-dark fw-bold">{{ edu.score }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Achievements -->
+    <section id="certifications&achievements" class="py-5 bg-white" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Certifications & Achievements</h2>
+                <p class="text-muted">Professional recognitions and accomplishments</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-transparent border-bottom">
+                            <h3 class="h4 text-center fw-bold">
+                                <i class="fas fa-certificate text-primary me-2"></i>
+                                Certifications
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                {% for cert in certifications %}
+                                <li class="d-flex align-items-start mb-3">
+                                    <i class="fas fa-check-circle text-success mt-1 me-2"></i>
+                                    <span>{{ cert }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-transparent border-bottom">
+                            <h3 class="h4 text-center fw-bold">
+                                <i class="fas fa-trophy text-warning me-2"></i>
+                                Achievements
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                {% for achieve in achievements %}
+                                <li class="d-flex align-items-start mb-3">
+                                    <i class="fas fa-star text-primary mt-1 me-2"></i>
+                                    <span>{{ achieve }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Certifications & Achievements -->
-<section id="certifications&achievements" class="py-5 bg-white" data-aos="fade-up">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Certifications & Achievements</h2>
-            <p class="text-muted">Professional recognitions and accomplishments</p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-header bg-transparent border-bottom">
-                        <h3 class="h4 text-center fw-bold">
-                            <i class="fas fa-certificate text-primary me-2"></i>
-                            Certifications
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled">
-                            {% for cert in certifications %}
-                            <li class="d-flex align-items-start mb-3">
-                                <i class="fas fa-check-circle text-success mt-1 me-2"></i>
-                                <span>{{ cert }}</span>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-6">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-header bg-transparent border-bottom">
-                        <h3 class="h4 text-center fw-bold">
-                            <i class="fas fa-trophy text-warning me-2"></i>
-                            Achievements
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled">
-                            {% for achieve in achievements %}
-                            <li class="d-flex align-items-start mb-3">
-                                <i class="fas fa-star text-primary mt-1 me-2"></i>
-                                <span>{{ achieve }}</span>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Introduction Video Section -->
-<section id="introduction" class="video-section py-4">
-  <div class="container">
-        <div class="d-flex justify-content-center flex-wrap mb-2">
-            <div class="text-center mx-3 mb-3">
+    <!-- Introduction Video Section -->
+    <section id="introduction" class="video-section py-4">
+        <div class="container">
+            <div class="d-flex justify-content-center flex-wrap mb-2">
+                <div class="text-center mx-3 mb-3">
                     <a href="{{ social_links.github }}" target="_blank" class="d-block">
                         <i class="fab fa-github fa-1x"></i>
                         <span class="mt-1 d-block small">GitHub</span>
                     </a>
                 </div>
-                
+
                 <div class="text-center mx-3 mb-3">
                     <a href="{{ social_links.linkedin }}" target="_blank" class="d-block">
                         <i class="fab fa-linkedin fa-1x"></i>
                         <span class="mt-1 d-block small">LinkedIn</span>
                     </a>
                 </div>
-                
+
                 <div class="text-center mx-3 mb-3">
                     <a href="{{ social_links.naukri }}" target="_blank" class="d-block">
-                        <img src="{% static 'media/naukri.png' %}" alt="naukri" style="width:15px; height:15px; border-radius: 100%;">
+                        <img src="{% static 'media/naukri.png' %}" alt="naukri"
+                            style="width:15px; height:15px; border-radius: 100%;">
                         <span class="mt-1 d-block small">Naukri</span>
                     </a>
                 </div>
-                
+
                 <div class="text-center mx-3 mb-3">
                     <a href="{{ social_links.hackerrank }}" target="_blank" class="d-block">
-                        <img src="{% static 'media/hackerrank.png' %}" alt="hackerrank" style="width:15px; height:15px; border-radius: 100%;">
+                        <img src="{% static 'media/hackerrank.png' %}" alt="hackerrank"
+                            style="width:15px; height:15px; border-radius: 100%;">
                         <span class="mt-1 d-block small">HackerRank</span>
                     </a>
                 </div>
-                
+
                 <div class="text-center mx-3 mb-3">
                     <a href="{{ social_links.leetcode }}" target="_blank" class="d-block">
-                        <img  src="{% static 'media/leetcode.png' %}" alt="leetcode" style="width:15px; height:15px; border-radius: 100%;">
+                        <img src="{% static 'media/leetcode.png' %}" alt="leetcode"
+                            style="width:15px; height:15px; border-radius: 100%;">
                         <span class="mt-1 d-block small">LeetCode</span>
                     </a>
                 </div>
@@ -487,7 +545,7 @@
                         <span class="mt-1 d-block small">WhatsApp</span>
                     </a>
                 </div>
-                
+
                 <div class="text-center mx-3 mb-3">
                     <a href="https://instagram.com/{{ social_links.instagram }}" target="_blank" class="d-block">
                         <i class="fab fa-instagram fa-1x"></i>
@@ -497,25 +555,23 @@
             </div>
         </div>
 
-            <div class="d-flex flex-column align-items-center">
-                <div class="video-wrapper">
-                    <!-- YouTube video embedded using iframe -->
-                    <div class="youtube-container">
-                        <iframe 
-                            src="https://www.youtube.com/embed/ntNo-xdM9gk" 
-                            title="Professional Introduction" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
+        <div class="d-flex flex-column align-items-center">
+            <div class="video-wrapper">
+                <!-- YouTube video embedded using iframe -->
+                <div class="youtube-container">
+                    <iframe src="https://www.youtube.com/embed/ntNo-xdM9gk" title="Professional Introduction"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
                 </div>
-                <p class="video-caption">Professional introduction video</p>
             </div>
-</section>
+            <p class="video-caption">Professional introduction video</p>
+        </div>
+    </section>
 
-<!-- introduction -->
-<!--
+    <!-- introduction -->
+    <!--
 <section id="introduction" class="video-section py-4">
   <div class="container">
         <div class="d-flex justify-content-center flex-wrap mb-2">
@@ -600,211 +656,281 @@
 </section>
 -->
 
-<!-- Languages Section -->
-<section class="bg-light py-5" data-aos="fade-up">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h3 class="fw-bold mb-3">Language Proficiency</h3>
-            <p class="text-muted mb-0">Professional communication in multiple languages</p>
-        </div>
-        
-        <div class="row justify-content-center g-4">
-            {% for lang in languages %}
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="p-4 text-center bg-white rounded-3 shadow-sm border-0 h-100 d-flex flex-column justify-content-center">
-                    <div class="mb-3">
-                        <span class="fs-1 text-primary">
-                            {% if lang.name == 'English' %}
-                            <i class="fas fa-language"></i>
-                            {% elif lang.name == 'Hindi' %}
-                            <i class="fas fa-book-open"></i>
-                            {% else %}
-                            <i class="fas fa-globe-asia"></i>
-                            {% endif %}
-                        </span>
-                    </div>
-                    <h4 class="h5 fw-semibold mb-2">{{ lang.name }}</h4>
-                    <div>
-                        <div class="progress mx-auto" style="height: 6px; width: 80%;">
-                            <div class="progress-bar bg-primary" 
-                                 style="width: {{ lang.proficiency_percentage }}%;"></div>
-                        </div>
-                        <small class="text-muted d-block mt-2">{{ lang.proficiency }}</small>
-                    </div>
-                </div>
+    <!-- Languages Section -->
+    <section class="bg-light py-5" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h3 class="fw-bold mb-3">Language Proficiency</h3>
+                <p class="text-muted mb-0">Professional communication in multiple languages</p>
             </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
 
-<!-- Contact Section -->
-<section id="contact" class="py-5 bg-light-alt" data-aos="fade-up">
-    <div class="container">
-        <div class="section-header text-center mb-5">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle text-muted">I'd love to hear from you</p>
-        </div>
-        
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body p-4 p-md-5">
-                        <div class="contact-method mb-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="contact-icon bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                                    <i class="fas fa-envelope fs-5"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-1">Email</h5>
-                                    <a href="mailto:{{ email }}" class="text-decoration-none">{{ email }}</a>
-                                </div>
-                            </div>
+            <div class="row justify-content-center g-4">
+                {% for lang in languages %}
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div
+                        class="p-4 text-center bg-white rounded-3 shadow-sm border-0 h-100 d-flex flex-column justify-content-center">
+                        <div class="mb-3">
+                            <span class="fs-1 text-primary">
+                                {% if lang.name == 'English' %}
+                                <i class="fas fa-language"></i>
+                                {% elif lang.name == 'Hindi' %}
+                                <i class="fas fa-book-open"></i>
+                                {% else %}
+                                <i class="fas fa-globe-asia"></i>
+                                {% endif %}
+                            </span>
                         </div>
-                        
-                        <div class="contact-method mb-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="contact-icon bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                                    <i class="fas fa-phone fs-5"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-1">Phone</h5>
-                                    <a href="tel:{{ phone }}" class="text-decoration-none">{{ phone }}</a>
+                        <h4 class="h5 fw-semibold mb-2">{{ lang.name }}</h4>
+                        <div>
+                            <div class="progress mx-auto" style="height: 6px; width: 80%;">
+                                <div class="progress-bar bg-primary" style="width: {{ lang.proficiency_percentage }}%;">
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="d-flex align-items-center">
-                                <div class="contact-icon bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                                    <i class="fas fa-map-marker-alt fs-5"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-1">Location</h5>
-                                    <a href="{{ address }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
-                                        Plot number 35, AMR Township, Balapur, Nadergul, Ranga Reddy, Telangana - 501510
-                                    </a>
-                                </div>
-                            </div>
+                            <small class="text-muted d-block mt-2">{{ lang.proficiency }}</small>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-3">
-    <p class="mb-1">&copy; 2025 MyPortfolio24x7 | Ajay Kumar Sah | All Rights Reserved</p>
-</footer>
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light-alt" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle text-muted">I'd love to hear from you</p>
+            </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const toggler = document.querySelector('.navbar-toggler');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const collapse = document.getElementById('navbarContent');
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body p-4 p-md-5">
+                            <div class="contact-method mb-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="contact-icon bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 50px; height: 50px;">
+                                        <i class="fas fa-envelope fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Email</h5>
+                                        <a href="mailto:{{ email }}" class="text-decoration-none">{{ email }}</a>
+                                    </div>
+                                </div>
+                            </div>
 
-  // Close navbar on link click (only in mobile)
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      const bsCollapse = bootstrap.Collapse.getInstance(collapse);
-      if (window.innerWidth < 992 && bsCollapse) {
-        bsCollapse.hide();
-      }
-    });
-  });
+                            <div class="contact-method mb-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="contact-icon bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 50px; height: 50px;">
+                                        <i class="fas fa-phone fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Phone</h5>
+                                        <a href="tel:{{ phone }}" class="text-decoration-none">{{ phone }}</a>
+                                    </div>
+                                </div>
+                            </div>
 
-  // Ensure toggler always toggles open/close correctly
-  toggler.addEventListener('click', () => {
-    const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapse);
-    bsCollapse.toggle();
-  });
-});
-</script>
+                            <div class="contact-method">
+                                <div class="d-flex align-items-center">
+                                    <div class="contact-icon bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3"
+                                        style="width: 50px; height: 50px;">
+                                        <i class="fas fa-map-marker-alt fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Location</h5>
+                                        <a href="{{ address }}" target="_blank" rel="noopener noreferrer"
+                                            class="text-decoration-none">
+                                            Hyderabad, Telangana, India
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({ duration: 1000, once: true });
-    document.addEventListener('DOMContentLoaded', function() {
-  const ticker = document.querySelector('.ticker-move');
-  // Clone content for seamless loop
-  ticker.setAttribute('data-content', ticker.textContent);
-  ticker.innerHTML = ticker.innerHTML + ticker.innerHTML;
-  
-  // Reset animation periodically to prevent drift
-  setInterval(() => {
-    ticker.style.animation = 'none';
-    ticker.offsetHeight; /* Trigger reflow */
-    ticker.style.animation = 'ticker 300s linear infinite';
-  }, 60000);
-});
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-1">&copy; 2025 MyPortfolio24x7 | Ajay Kumar Sah | All Rights Reserved</p>
+    </footer>
 
-// Error message showing while thumbnail or video fails to load
-  function handleVideoError() {
-    const video = document.querySelector('.intro-video');
-    const errorMsg = document.getElementById('video-error-message');
-    
-    // Show error and hide video player
-    errorMsg.style.display = 'block';
-    video.style.display = 'none';
-    
-    // Optional: Log the error for debugging
-    video.addEventListener('error', (e) => {
-      console.error('Video error:', e.target.error.code);
-    }, false);
-  }
-  
-  // Check thumbnail on load
-  document.addEventListener('DOMContentLoaded', () => {
-    const video = document.querySelector('.intro-video');
-    const thumbnail = video.poster;
-    
-    // Verify thumbnail exists
-    fetch(thumbnail)
-      .then(res => {
-        if (!res.ok) throw new Error('Thumbnail missing');
-      })
-      .catch(() => {
-        video.poster = ''; // Remove broken thumbnail
-        handleVideoError(); // Show error message
-      });
-  });
-          // Simple error handling for the video
-// Enhanced error handling for YouTube iframe
-function handleVideoError() {
-  const errorMsg = document.getElementById('video-error-message');
-  if (errorMsg) {
-    errorMsg.style.display = 'block';
-    errorMsg.textContent = 'YouTube video is not available at the moment.';
-  }
-  console.error('YouTube video failed to load');
-}
+    <script>
+        function getCSRFToken() {
+            return document.cookie
+                .split("; ")
+                .find(row => row.startsWith("csrftoken="))
+                ?.split("=")[1];
+        }
 
-// Check if YouTube iframe loaded successfully
-document.addEventListener('DOMContentLoaded', function() {
-  const iframe = document.querySelector('iframe[src*="youtube"]');
-  
-  if (iframe) {
-    iframe.onload = function() {
-      console.log('YouTube video loaded successfully');
-    };
-    
-    iframe.onerror = function() {
-      handleVideoError();
-    };
-    
-    // Fallback: if iframe doesn't load within 10 seconds
-    setTimeout(function() {
-      if (iframe && !iframe.contentWindow) {
-        handleVideoError();
-      }
-    }, 10000);
-  }
-});
+        // Robust check for page reload
+        function isPageReload() {
+            try {
+                // Modern browsers
+                const navEntries = performance.getEntriesByType("navigation");
+                if (navEntries.length > 0 && navEntries[0].type === 'reload') {
+                    return true;
+                }
+                // Legacy fallback
+                if (performance.navigation && performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+                    return true;
+                }
+            } catch (e) {
+                console.error("Navigation timing error:", e);
+            }
+            return false;
+        }
 
-</script>
+        // Count only once per TAB and NOT on reload
+        if (!isPageReload() && !sessionStorage.getItem("visitorCounted")) {
+            sessionStorage.setItem("visitorCounted", "pending");
+
+            fetch("/increase-visitor", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": getCSRFToken(),
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        sessionStorage.setItem("visitorCounted", "true");
+                        // Target the ID the user prefers: 'visitor-count'
+                        const countDisplay = document.getElementById("visitor-count");
+                        if (countDisplay) {
+                            countDisplay.innerText = data.count;
+                        }
+                    } else {
+                        sessionStorage.removeItem("visitorCounted");
+                    }
+                })
+                .catch(err => {
+                    console.error("Error updating visitor count:", err);
+                    sessionStorage.removeItem("visitorCounted");
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggler = document.querySelector('.navbar-toggler');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const collapse = document.getElementById('navbarContent');
+
+            // Close navbar on link click (only in mobile)
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+                    if (window.innerWidth < 992 && bsCollapse) {
+                        bsCollapse.hide();
+                    }
+                });
+            });
+
+            // Manual toggle for hamburger menu
+            toggler.addEventListener('click', () => {
+                const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapse);
+                bsCollapse.toggle();
+            });
+
+            // Close navbar when clicking outside
+            document.addEventListener('click', function (event) {
+                const isClickInside = collapse.contains(event.target) || toggler.contains(event.target);
+                const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+
+                if (!isClickInside && bsCollapse && collapse.classList.contains('show')) {
+                    bsCollapse.hide();
+                }
+            });
+        });
+    </script>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        document.addEventListener('DOMContentLoaded', function () {
+            const ticker = document.querySelector('.ticker-move');
+            // Clone content for seamless loop
+            ticker.setAttribute('data-content', ticker.textContent);
+            ticker.innerHTML = ticker.innerHTML + ticker.innerHTML;
+
+            // Reset animation periodically to prevent drift
+            setInterval(() => {
+                ticker.style.animation = 'none';
+                ticker.offsetHeight; /* Trigger reflow */
+                ticker.style.animation = 'ticker 300s linear infinite';
+            }, 60000);
+        });
+
+        // Error message showing while thumbnail or video fails to load
+        function handleVideoError() {
+            const video = document.querySelector('.intro-video');
+            const errorMsg = document.getElementById('video-error-message');
+
+            // Show error and hide video player
+            errorMsg.style.display = 'block';
+            video.style.display = 'none';
+
+            // Optional: Log the error for debugging
+            video.addEventListener('error', (e) => {
+                console.error('Video error:', e.target.error.code);
+            }, false);
+        }
+
+        // Check thumbnail on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector('.intro-video');
+            const thumbnail = video.poster;
+
+            // Verify thumbnail exists
+            fetch(thumbnail)
+                .then(res => {
+                    if (!res.ok) throw new Error('Thumbnail missing');
+                })
+                .catch(() => {
+                    video.poster = ''; // Remove broken thumbnail
+                    handleVideoError(); // Show error message
+                });
+        });
+        // Simple error handling for the video
+        // Enhanced error handling for YouTube iframe
+        function handleVideoError() {
+            const errorMsg = document.getElementById('video-error-message');
+            if (errorMsg) {
+                errorMsg.style.display = 'block';
+                errorMsg.textContent = 'YouTube video is not available at the moment.';
+            }
+            console.error('YouTube video failed to load');
+        }
+
+        // Check if YouTube iframe loaded successfully
+        document.addEventListener('DOMContentLoaded', function () {
+            const iframe = document.querySelector('iframe[src*="youtube"]');
+
+            if (iframe) {
+                iframe.onload = function () {
+                    console.log('YouTube video loaded successfully');
+                };
+
+                iframe.onerror = function () {
+                    handleVideoError();
+                };
+
+                // Fallback: if iframe doesn't load within 10 seconds
+                setTimeout(function () {
+                    if (iframe && !iframe.contentWindow) {
+                        handleVideoError();
+                    }
+                }, 10000);
+            }
+        });
+
+    </script>
 </body>
+
 </html>

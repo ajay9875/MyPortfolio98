@@ -1,7 +1,24 @@
 from django.shortcuts import render
 from decouple import config
+from .models import VisitorCount
+
+from django.http import JsonResponse
+
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def increase_visitor(request):
+    visitor_data, created = VisitorCount.objects.get_or_create(id=1)
+    visitor_data.count += 1
+    visitor_data.save()
+    return JsonResponse({"success": True, "count": visitor_data.count})
+
 def portfolio(request):
+    # Get visitor count (do NOT increment here)
+    visitor_data, created = VisitorCount.objects.get_or_create(id=1)
+
     context = {
+        "visitor_count": visitor_data.count,
         "ticker_items": [
             "🏆 All India NCAT Rank #39493 (Top 3%) | HackerRank Gold (Python 115/115, SQL 58/58)",
             "🤖 Developed Revolt Motors Voice Assistant (Node.js, Gemini API, Socket.IO)",
