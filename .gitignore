@@ -2,8 +2,6 @@
 .venv/
 venv/
 
-.staticfiles
-
 # Database
 db.sqlite3
 
@@ -11,9 +9,6 @@ db.sqlite3
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Ignore the mutual funds data JSON file
-mutual_funds_data.json
 
 # Environment variables
 .env
@@ -45,7 +40,6 @@ __pycache__/
 # Explicitly keep these (remove from .gitignore if present)
 !Myproject/
 !Myapp/
-!static/
 !manage.py
 !requirements.txt
 !/.gitignore
