@@ -50,7 +50,7 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#top">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
@@ -74,18 +74,6 @@
                 <div class="ticker-item">{{ item }}</div>
                 {% endfor %}
             </div>
-        </div>
-    </div>
-
-    <!-- Visitor Counter -->
-    <div class="container mt-3">
-        <div class="visitor-counter text-start">
-            {% if visitor_count %}
-            <h4 id="visitor-count" class="fw-bold mb-0">{{ visitor_count }}</h4>
-            {% else %}
-            <h4 id="visitor-count-display" class="fw-bold mb-0">0</h4>
-            {% endif %}
-            <small class="text-muted">VISITORS</small>
         </div>
     </div>
 
@@ -157,6 +145,45 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section class="bg-light py-5" data-aos="fade-up">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h3 class="fw-bold mb-3">Language Proficiency</h3>
+                <p class="text-muted mb-0">Professional communication in multiple languages</p>
+            </div>
+
+            <div class="row justify-content-center g-4">
+                {% for lang in languages %}
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div
+                        class="p-4 text-center bg-white rounded-3 shadow-sm border-0 h-100 d-flex flex-column justify-content-center">
+                        <div class="mb-3">
+                            <span class="fs-1 text-primary">
+                                {% if lang.name == 'English' %}
+                                <i class="fas fa-language"></i>
+                                {% elif lang.name == 'Hindi' %}
+                                <i class="fas fa-book-open"></i>
+                                {% else %}
+                                <i class="fas fa-globe-asia"></i>
+                                {% endif %}
+                            </span>
+                        </div>
+                        <h4 class="h5 fw-semibold mb-2">{{ lang.name }}</h4>
+                        <div>
+                            <div class="progress mx-auto" style="height: 6px; width: 80%;">
+                                <div class="progress-bar bg-primary" style="width: {{ lang.proficiency_percentage }}%;">
+                                </div>
+                            </div>
+                            <small class="text-muted d-block mt-2">{{ lang.proficiency }}</small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -570,45 +597,6 @@
         </div>
     </section>
 
-    <!-- Languages Section -->
-    <section class="bg-light py-5" data-aos="fade-up">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h3 class="fw-bold mb-3">Language Proficiency</h3>
-                <p class="text-muted mb-0">Professional communication in multiple languages</p>
-            </div>
-
-            <div class="row justify-content-center g-4">
-                {% for lang in languages %}
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div
-                        class="p-4 text-center bg-white rounded-3 shadow-sm border-0 h-100 d-flex flex-column justify-content-center">
-                        <div class="mb-3">
-                            <span class="fs-1 text-primary">
-                                {% if lang.name == 'English' %}
-                                <i class="fas fa-language"></i>
-                                {% elif lang.name == 'Hindi' %}
-                                <i class="fas fa-book-open"></i>
-                                {% else %}
-                                <i class="fas fa-globe-asia"></i>
-                                {% endif %}
-                            </span>
-                        </div>
-                        <h4 class="h5 fw-semibold mb-2">{{ lang.name }}</h4>
-                        <div>
-                            <div class="progress mx-auto" style="height: 6px; width: 80%;">
-                                <div class="progress-bar bg-primary" style="width: {{ lang.proficiency_percentage }}%;">
-                                </div>
-                            </div>
-                            <small class="text-muted d-block mt-2">{{ lang.proficiency }}</small>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="py-5 bg-light-alt" data-aos="fade-up">
         <div class="container">
@@ -672,6 +660,14 @@
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3">
         <p class="mb-1">&copy; 2025 MyPortfolio24x7 | Ajay Kumar Sah | All Rights Reserved</p>
+        <div class="visitor-counter mt-2">
+            <small class="text-white-50">VISITORS: </small>
+            {% if visitor_count %}
+            <span id="visitor-count" class="fw-bold text-white">{{ visitor_count }}</span>
+            {% else %}
+            <span id="visitor-count-display" class="fw-bold text-white">0</span>
+            {% endif %}
+        </div>
     </footer>
 
     <script>

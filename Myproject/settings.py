@@ -58,13 +58,44 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Myproject.wsgi.application'
 
-# Database (using SQLite)
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Database Configuration
+# Checks for DB_HOST in env to switch to MySQL (Production), otherwise uses SQLite (Local)
+# Includes a connectivity check to gracefully fallback to SQLite if MySQL is unreachable
+import socket
+
+use_mysql = False
+db_host = config('DB_HOST', default=None)
+
+if db_host:
+    try:
+        # Try to connect to the host to see if it's reachable (short timeout)
+        # PythonAnywhere DBs are often not reachable from outside, so this handles local dev with prod env vars
+        sock = socket.create_connection((db_host, int(config('DB_PORT', default=3306))), timeout=3)
+        sock.close()
+        use_mysql = True
+    except (socket.timeout, socket.error) as e:
+        print(f"\n⚠️  MySQL Connection Failed: {e}")
+        print("⚠️  Falling back to local SQLite database.\n")
+        use_mysql = False
+
+if use_mysql:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': config('DB_PORT', default='3306'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -111,14 +142,11 @@ WHITENOISE_MANIFEST_STRICT = False
 WHITENOISE_MAX_AGE = 31536000  # 1 year cache
 
 # HTTPS and Cookie Security
-if DEBUG:
-    SECURE_SSL_REDIRECT = False
-    SESSION_COOKIE_SECURE = False
-    CSRF_COOKIE_SECURE = False
-else:
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+# HTTPS and Cookie Security
+# Disabled strict SSL to prevent local development issues
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 
 # Add this import if not already present at top
 import os
