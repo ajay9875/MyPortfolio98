@@ -56,7 +56,6 @@
                     <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#certifications&achievements">Certifications</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#introduction">Introduction Video</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -176,9 +175,8 @@
                         <h4 class="h5 fw-semibold mb-2">{{ lang.name }}</h4>
                         <div>
                             <div class="progress mx-auto" style="height: 6px; width: 80%;">
-                                <div class="progress-bar bg-primary" style="width: {{ lang.proficiency_percentage }}%;">
-                                </div>
-                            </div>
+                                <div class="progress-bar bg-primary"></div> 
+                        </div>
                             <small class="text-muted d-block mt-2">{{ lang.proficiency }}</small>
                         </div>
                     </div>
@@ -349,8 +347,7 @@
                                     <li>Responsive and intuitive interface</li>
                                 </ul>
                             </div>
-                            <div class="card-footer" style="margin-top: auto;"><small>December 2024 - February
-                                    2025</small></div>
+                            <div class="card-footer" style="margin-top: auto;"><small>December 2024 - February 2025</small></div>
                         </div>
                     </a>
                 </div>
@@ -374,8 +371,7 @@
                                     <li>Integration with popular travel APIs for accurate information</li>
                                 </ul>
                             </div>
-                            <div class="card-footer" style="margin-top: auto;"><small>September 2025 - October
-                                    2025</small></div>
+                            <div class="card-footer" style="margin-top: auto;"><small>September 2025 - October 2025</small></div>
                         </div>
                     </a>
                 </div>
@@ -427,8 +423,7 @@
                                     <h4 class="h5 fw-bold mb-1">{{ exp.position }}</h4>
                                     <h5 class="h6 text-muted">{{ exp.company }}</h5>
                                 </div>
-                                <span class="badge bg-primary bg-opacity-10 text-primary mt-2 mt-md-0">{{ exp.duration
-                                    }}</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary mt-2 mt-md-0">{{ exp.duration }}</span>
                             </div>
                             <p class="mb-0">{{ exp.description }}</p>
                         </div>
@@ -524,7 +519,15 @@
         </div>
     </section>
 
-    <!-- Introduction Video Section -->
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light-alt" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle text-muted">I'd love to hear from you</p>
+            </div>
+
+                <!-- Introduction Video Section -->
     <section id="introduction" class="video-section py-4">
         <div class="container">
             <div class="d-flex justify-content-center flex-wrap mb-2">
@@ -581,10 +584,10 @@
                 </div>
             </div>
         </div>
-
+        
+        <!-- YouTube video embedded using iframe
         <div class="d-flex flex-column align-items-center">
             <div class="video-wrapper">
-                <!-- YouTube video embedded using iframe -->
                 <div class="youtube-container">
                     <iframe src="https://www.youtube.com/embed/ntNo-xdM9gk" title="Professional Introduction"
                         frameborder="0"
@@ -595,15 +598,8 @@
             </div>
             <p class="video-caption">Professional introduction video</p>
         </div>
+        -->
     </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-light-alt" data-aos="fade-up">
-        <div class="container">
-            <div class="section-header text-center mb-5">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle text-muted">I'd love to hear from you</p>
-            </div>
 
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6">
@@ -657,17 +653,14 @@
         </div>
     </section>
 
+    <div id="visitorCountBox" class="visitor-count">
+        👁 Visitors: <span id="visitorCount">{{ visitor_count }}</span>
+        <span class="live-dot"></span>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3">
-        <p class="mb-1">&copy; 2025 MyPortfolio24x7 | Ajay Kumar Sah | All Rights Reserved</p>
-        <div class="visitor-counter mt-2">
-            <small class="text-white-50">VISITORS: </small>
-            {% if visitor_count %}
-            <span id="visitor-count" class="fw-bold text-white">{{ visitor_count }}</span>
-            {% else %}
-            <span id="visitor-count-display" class="fw-bold text-white">0</span>
-            {% endif %}
-        </div>
+        <p class="mb-1">&copy; 2025 MyPortfolio98 | Ajay Kumar Sah | All Rights Reserved</p>
     </footer>
 
     <script>
@@ -729,12 +722,21 @@
             const toggler = document.querySelector('.navbar-toggler');
             const navLinks = document.querySelectorAll('.nav-link');
             const collapse = document.getElementById('navbarContent');
+            const bsCollapse = new bootstrap.Collapse(collapse, { toggle: false });
+
+            // Toggle 'nav-open' class on body based on navbar state
+            collapse.addEventListener('show.bs.collapse', function () {
+                document.body.classList.add('nav-open');
+            });
+
+            collapse.addEventListener('hide.bs.collapse', function () {
+                document.body.classList.remove('nav-open');
+            });
 
             // Close navbar on link click (only in mobile)
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    const bsCollapse = bootstrap.Collapse.getInstance(collapse);
-                    if (window.innerWidth < 992 && bsCollapse) {
+                    if (window.innerWidth < 992 && collapse.classList.contains('show')) {
                         bsCollapse.hide();
                     }
                 });
@@ -742,16 +744,14 @@
 
             // Manual toggle for hamburger menu
             toggler.addEventListener('click', () => {
-                const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapse);
                 bsCollapse.toggle();
             });
 
             // Close navbar when clicking outside
             document.addEventListener('click', function (event) {
                 const isClickInside = collapse.contains(event.target) || toggler.contains(event.target);
-                const bsCollapse = bootstrap.Collapse.getInstance(collapse);
 
-                if (!isClickInside && bsCollapse && collapse.classList.contains('show')) {
+                if (!isClickInside && collapse.classList.contains('show')) {
                     bsCollapse.hide();
                 }
             });
