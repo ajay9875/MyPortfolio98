@@ -72,19 +72,31 @@ def portfolio(request):
 
         'experience': [
             {
-                'position': 'Cloud Architecture using AWS',
-                'company': 'Webguru Infosystem',
-                'duration': 'August 2024 - October 2024',
-                'description': 'Gained hands-on experience in provisioning EC2 instances and managing IAM user permissions and root access controls in Amazon AWS.'
+                'position': 'Prompt Engineering Intern',
+                'company': 'Future Interns',
+                'duration': '4 Weeks',
+                'description': 'Completed a 4-week internship in prompt engineering, building structured prompt frameworks to guide AI models through step-by-step logical output.'
             },
+            {
+                'position': 'Data Science Intern',
+                'company': 'Unified Mentor Private Limited',
+                'duration': '3 Months',
+                'description': 'Completed a 3-month internship focused on data analysis and statistical modelling to generate predictive insights for business intelligence using Python and Tableau.'
+            },
+            {
+                'position': 'Cloud Architecture Intern',
+                'company': 'Webguru Infosystem',
+                'duration': '2 Months',
+                'description': 'Completed a 2-month internship focused on designing and implementing scalable cloud infrastructure solutions using AWS services.'
+            }
         ],
-        
+
         'education': [
             {
                 'degree': 'B.Tech/B.E. in Computer Science',
                 'institution': 'Brainware University, West Bengal',
                 'year': '2021 - 2025',
-                'score': '8.73 CGPA'
+                'score': '82.23 % / 8.73 CGPA'
             },
             {
                 'degree': 'Class XII',
