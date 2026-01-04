@@ -45,29 +45,29 @@ def portfolio(request):
         'location': 'Hyderabad',
         
         'skills': [
+            {'name': 'Problem Solving', 'image': 'skills/problem-solving.png'},
             {'name': 'Python', 'image': 'skills/python.png'},
             {'name': 'SQL', 'image': 'skills/sql.png'},
-            {'name': 'Problem Solving', 'image': 'skills/problem-solving.png'},
-            {'name': 'Large Language Models', 'image': 'skills/large.png'},
+            #{'name': 'Large Language Models', 'image': 'skills/large.png'},
             {'name': 'Prompt Engineering', 'image': 'skills/prompt.png'},
-            {'name': 'Natural Language Processing', 'image': 'skills/natural.png'},
+            #{'name': 'Natural Language Processing', 'image': 'skills/natural.png'},
             {'name': 'Django', 'image': 'skills/django.png'},
             {'name': 'Flask', 'image': 'skills/flask.png'},
+            {'name': 'React', 'image': 'skills/react.png'},
+            {'name': 'Docker', 'image': 'skills/docker.png'},
             {'name': 'PostgreSQL', 'image': 'skills/postgresql.png'},
             {'name': 'Git', 'image': 'skills/git.png'},
             {'name': 'GitHub', 'image': 'skills/github.png'},
-            {'name': 'AWS', 'image': 'skills/aws.png'},
-            {'name': 'Object Oriented Programming', 'image': 'skills/oop.png'},
-            {'name': 'Data Structure', 'image': 'skills/data-structure.png'},
-            {'name': 'Pandas', 'image': 'skills/pandas.png'},
-            {'name': 'Numpy', 'image': 'skills/numpy.png'},
-            {'name': 'Matplotlib', 'image': 'skills/matplotlib.png'},
-            {'name': 'Seaborn', 'image': 'skills/seaborn.png'},
-            {'name': 'HTML', 'image': 'skills/html.png'},
-            {'name': 'CSS', 'image': 'skills/css.png'},
+            #{'name': 'AWS', 'image': 'skills/aws.png'},
+            #{'name': 'Object Oriented Programming', 'image': 'skills/oop.png'},
+            #{'name': 'Data Structure', 'image': 'skills/data-structure.png'},
+            #{'name': 'Pandas', 'image': 'skills/pandas.png'},
+            #{'name': 'Numpy', 'image': 'skills/numpy.png'},
+            #{'name': 'Matplotlib', 'image': 'skills/matplotlib.png'},
+            #{'name': 'Seaborn', 'image': 'skills/seaborn.png'},
+            {'name': 'HTML CSS', 'image': 'skills/html.png'},
             {'name': 'JavaScript', 'image': 'skills/javascript.png'},
             {'name': 'BootStrap', 'image': 'skills/bootstrap.png'},
-
         ],
 
         'experience': [
@@ -96,17 +96,17 @@ def portfolio(request):
                 'degree': 'B.Tech/B.E. in Computer Science',
                 'institution': 'Brainware University, West Bengal',
                 'year': '2021 - 2025',
-                'score': '82.23 % / 8.73 CGPA'
+                'score': '8.73 CGPA / 82.23 %'
             },
             {
                 'degree': 'Class XII',
-                'institution': 'Bihar Board (Hindi Medium)',
+                'institution': 'Bihar School Examination Board, Patna',
                 'year': '2018 - 2020',
                 'score': '66.6%'
             },
             {
                 'degree': 'Class X',
-                'institution': 'Bihar Board (Hindi Medium)',
+                'institution': 'Bihar School Examination Board, Patna',
                 'year': '2017 - 2018',
                 'score': '64.2%'
             },
@@ -124,8 +124,9 @@ def portfolio(request):
         ],
         
         'languages': [
+            {'name': 'English', 'proficiency': 'Fluent'},
             {'name': 'Hindi', 'proficiency': 'Native'},
-            {'name': 'English', 'proficiency': 'Fluent'}
+            {'name': 'Bengali', 'proficiency': 'Intermediate'},
         ],
         
         'achievements': [
