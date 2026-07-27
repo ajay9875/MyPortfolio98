@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
 SECRET_KEY = config("SECRET_KEY")
-DEBUG = config("DEBUG", default=True, cast=bool)
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 # Hosts configuration
 BASE_ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', 'myportfolio98.onrender.com', 'myportfolio98.pythonanywhere.com']

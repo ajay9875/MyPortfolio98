@@ -20,18 +20,20 @@ def portfolio(request):
     context = {
         "visitor_count": visitor_data.count,
         "ticker_items": [
-            "🏆 All India NCAT Rank #39493 (Top 3%) | HackerRank Gold (Python 115/115, SQL 58/58)",
-            "🤖 Developed Revolt Motors Voice Assistant (Node.js, Gemini API, Socket.IO)",
-            "📄 Built Intelli Doc AI for multi-format document processing & NLU",
-            "📊 Created AI-Powered Mutual Fund Recommendation System (Collaborative/Content-Based Filtering)",
-            "🎓 Built Adaptive Online Course Recommendation System using AI & similarity scoring",
-            "✅ Developed TaskCare360: Flask To-Do App with email reminders & OTP security",
-            "🌐 Designed & Deployed MyPortfolio24*7 (Live on Render)",
-            "📈 Data Analysis: Python, SQL, ETL, EDA, Pandas, NumPy, Power BI, Tableau",
-            "🤖 AI/ML: NLP, LLMs, Prompt Engineering, Scikit-Learn",
-            "💻 Backend: Django, Flask, REST APIs, PostgreSQL, MySQL",
-            "☁️ Cloud & DevOps: AWS (S3, Lambda), CI/CD, GitHub, Render"
-            ],
+                    "🏆 All India NCAT Rank #39493 (Top 3%) | HackerRank Gold (Python 115/115, SQL 58/58)",
+                    "🤖 Developed Revolt Motors Voice Assistant (Node.js, Gemini API, Socket.IO)",
+                    "🚗 Built Axel Drive Pro: Custom WordPress Car Rental Plugin & CPT Theme Architecture",
+                    "📄 Built Intelli Doc AI for multi-format document processing & NLU",
+                    "📊 Created AI-Powered Mutual Fund Recommendation System (Collaborative/Content-Based Filtering)",
+                    "🎓 Built Adaptive Online Course Recommendation System using AI & similarity scoring",
+                    "✅ Developed TaskCare360: Flask To-Do App with email reminders & OTP security",
+                    "🌐 Designed & Deployed MyPortfolio24*7 (Live on Render)",
+                    "🎨 WordPress Engineering: Custom Themes/Plugins, PHP, CPTs, REST APIs & Elementor",
+                    "📈 Data Analysis: Python, SQL, ETL, EDA, Pandas, NumPy, Power BI, Tableau",
+                    "🤖 AI/ML: NLP, LLMs, Prompt Engineering, Scikit-Learn",
+                    "💻 Backend: Django, Flask, REST APIs, PostgreSQL, MySQL",
+                    "☁️ Cloud & DevOps: AWS (S3, Lambda), CI/CD, GitHub, Render"
+                ],
 
         'name': 'AJAY KUMAR SAH',
         'title': "",
@@ -48,7 +50,7 @@ def portfolio(request):
             {'name': 'Problem Solving', 'image': 'skills/problem-solving.png'},
             {'name': 'Python', 'image': 'skills/python.png'},
             {'name': 'SQL', 'image': 'skills/sql.png'},
-            #{'name': 'Large Language Models', 'image': 'skills/large.png'},
+            {'name': 'Large Language Models', 'image': 'skills/large.png'},
             {'name': 'Prompt Engineering', 'image': 'skills/prompt.png'},
             #{'name': 'Natural Language Processing', 'image': 'skills/natural.png'},
             {'name': 'Django', 'image': 'skills/django.png'},
@@ -60,7 +62,7 @@ def portfolio(request):
             {'name': 'GitHub', 'image': 'skills/github.png'},
             #{'name': 'AWS', 'image': 'skills/aws.png'},
             #{'name': 'Object Oriented Programming', 'image': 'skills/oop.png'},
-            #{'name': 'Data Structure', 'image': 'skills/data-structure.png'},
+            {'name': 'Data Structure', 'image': 'skills/data-structure.png'},
             #{'name': 'Pandas', 'image': 'skills/pandas.png'},
             #{'name': 'Numpy', 'image': 'skills/numpy.png'},
             #{'name': 'Matplotlib', 'image': 'skills/matplotlib.png'},
@@ -75,18 +77,21 @@ def portfolio(request):
                 'position': 'Prompt Engineering Intern',
                 'company': 'Future Interns',
                 'duration': '4 Weeks',
+                'live': 'https://aitourguide.pythonanywhere.com/',
                 'description': 'Completed a 4-week internship in prompt engineering, building structured prompt frameworks to guide AI models through step-by-step logical output.'
             },
             {
                 'position': 'Data Science Intern',
                 'company': 'Unified Mentor Private Limited',
                 'duration': '3 Months',
+                'live': '#',
                 'description': 'Completed a 3-month internship focused on data analysis and statistical modelling to generate predictive insights for business intelligence using Python and Tableau.'
             },
             {
-                'position': 'Cloud Architecture Intern',
+                'position': 'Cloud Architecture using AWS',
                 'company': 'Webguru Infosystem',
                 'duration': '2 Months',
+                'live': '#',
                 'description': 'Completed a 2-month internship focused on designing and implementing scalable cloud infrastructure solutions using AWS services.'
             }
         ],
