@@ -43,3 +43,5 @@ __pycache__/
 !manage.py
 !requirements.txt
 !/.gitignore
+
+staticfiles/

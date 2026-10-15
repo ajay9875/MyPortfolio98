@@ -115,7 +115,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # for collectstatic
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
     BASE_DIR / 'Myapp' / 'static',
 ]
 
