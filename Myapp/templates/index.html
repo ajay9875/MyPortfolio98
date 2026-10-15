@@ -37,7 +37,7 @@
     NAVBAR
     ============================================ -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
+        <div class="container-fluid px-4">
             <a class="navbar-brand" href="#about">AKS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,13 +46,17 @@
 
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#about">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>   
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
                     <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% static 'Ajay_Kumar_Sah_Resume.pdf' %}" target="_blank" rel="noopener noreferrer" class="btn btn-glow">
+                        <i class="fas fa-eye me-2"></i>View Resume
+                    </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -143,7 +147,7 @@
 </section>
 
     <!-- ============================================
-    SECTION: SKILLS
+    SECTION: SKILLS (Updated with Subheadings)
     ============================================ -->
     <section id="skills">
         <div class="container">
@@ -151,23 +155,29 @@
                 <h2 class="section-title">Technical <span class="highlight">Skills</span></h2>
                 <p class="section-subtitle">Tools & technologies I work with</p>
             </div>
-            <div class="row g-3">
-                {% for skill in skills %}
-                <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:'100' }}">
-                    <div class="skill-card">
-                        {% with first_word=skill.name.split.0|lower %}
-                        <img src="{% static 'skills/'|add:first_word|add:'.png' %}" alt="{{ skill.name }}">
-                        {% endwith %}
-                        <span>{{ skill.name }}</span>
+
+            {% for category in skill_categories %}
+            <div class="mb-5" data-aos="fade-up">
+                <h4 class="skill-category-title mb-4">
+                    <i class="fas fa-code me-2"></i>{{ category.name }}
+                </h4>
+                <div class="row g-3">
+                    {% for skill in category.skills %}
+                    <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:'100' }}">
+                        <div class="skill-card">
+                            <img src="{% static 'skills/'|add:skill.image %}" alt="{{ skill.name }}">
+                            <span>{{ skill.name }}</span>
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
     </section>
 
     <!-- ============================================
-    SECTION: EXPERIENCE
+    SECTION: EXPERIENCE (Unified Professional Layout)
     ============================================ -->
     <section id="experience">
         <div class="container">
@@ -176,39 +186,7 @@
                 <p class="section-subtitle">My career journey</p>
             </div>
 
-            <!-- NEW: White Soft Info -->
             <div class="row g-4 justify-content-center">
-                <div class="col-lg-10" data-aos="fade-up">
-                    <div class="exp-card">
-                        <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
-                            <div>
-                                <h4 class="fw-bold mb-1">
-                                    Software Developer Trainee
-                                    <span class="exp-badge-live"><i class="fas fa-circle"></i> Live</span>
-                                </h4>
-                                <span class="exp-company">White Soft Info <span class="badge bg-secondary bg-opacity-25 text-white-50 ms-2">Remote</span></span>
-                            </div>
-                            <span class="exp-duration"><i class="far fa-calendar-alt me-1"></i> March 2026 – Present</span>
-                        </div>
-                        <div class="mb-3">
-                            <a href="https://wp-websites.free.nf/" target="_blank" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
-                                <i class="fas fa-link me-1"></i>Live Demo
-                            </a>                            
-                            <span class="exp-tech-badge" style="background:rgba(0,242,254,0.15);color:#4facfe;">WordPress</span>
-                            <span class="exp-tech-badge" style="background:rgba(245,87,108,0.15);color:#f5576c;">Elementor</span>
-                            <span class="exp-tech-badge" style="background:rgba(0,242,96,0.15);color:#00f260;">WooCommerce</span>
-                        </div>
-                        <ul class="exp-achievements">
-                            <li>Engineered custom post types and secure shortcodes, automating backend booking workflows and reducing manual data entry by <strong>80%</strong>.</li>
-                            <li>Built responsive digital architecture using Elementor and custom theme templates, achieving <strong>100%</strong> mobile compatibility.</li>
-                            <li>Automated product workflows via WooCommerce and ShopLentor, cutting manual synchronisation overhead by <strong>75%</strong>.</li>
-                            <li>Optimised custom checkout modules and Orderable integrations, boosting ordering efficiency by <strong>65%</strong>.</li>
-                            <li>Developed single-page web structures with custom footers and interactive features, unifying multi-site brand ecosystems.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Existing Experience Loop -->
                 {% for exp in experience %}
                 <div class="col-lg-10" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
                     <div class="exp-card">
@@ -222,7 +200,7 @@
                                     {% endif %}
                                 </h4>
                                 <span class="exp-company">
-                                    {{ exp.company }} 
+                                    {{ exp.company }}
                                     <span class="badge bg-secondary bg-opacity-25 text-white-50 ms-2">Remote</span>
                                 </span>
                             </div>
@@ -233,28 +211,31 @@
 
                         <!-- Badges & Links Section -->
                         <div class="mb-3">
-                        {% if exp.live and exp.live != '#' %}
+
+                            {% if 'Software Engineer' in exp.position %}
+                                <span class="exp-tech-badge" style="background:rgba(0,242,254,0.15);color:#4facfe;">Kotlin</span>
+                                <span class="exp-tech-badge" style="background:rgba(245,87,108,0.15);color:#f5576c;">React.js</span>
+                                <span class="exp-tech-badge" style="background:rgba(0,242,96,0.15);color:#00f260;">Django REST</span>
+                                <span class="exp-tech-badge" style="background:rgba(255,193,7,0.15);color:#ffc107;">Jetpack Compose</span>
+                            {% elif 'Software Developer Trainee' in exp.position %}
+                                <span class="exp-tech-badge" style="background:rgba(0,242,254,0.15);color:#4facfe;">WordPress</span>
+                                <span class="exp-tech-badge" style="background:rgba(245,87,108,0.15);color:#f5576c;">Elementor</span>
+                                <span class="exp-tech-badge" style="background:rgba(0,242,96,0.15);color:#00f260;">WooCommerce</span>
+                            {% endif %}
+
+                            {% if exp.live and exp.live != '#' %}
                                 <a href="{{ exp.live }}" target="_blank" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
                                     <i class="fas fa-link me-1"></i>Live Demo
                                 </a>
                             {% endif %}
-
-                            {% if 'Prompt Engineering' in exp.position %}
-                                <span class="exp-tech-badge" style="background:rgba(0,242,254,0.15);color:#4facfe;">LLMs</span>
-                                <span class="exp-tech-badge" style="background:rgba(245,87,108,0.15);color:#f5576c;">Prompt Engineering</span>
-                                <span class="exp-tech-badge" style="background:rgba(0,242,96,0.15);color:#00f260;">GenAI</span>
-                            {% elif 'Data Science' in exp.position %}
-                                <span class="exp-tech-badge" style="background:rgba(0,242,254,0.15);color:#4facfe;">Python</span>
-                                <span class="exp-tech-badge" style="background:rgba(245,87,108,0.15);color:#f5576c;">Tableau</span>
-                                <span class="exp-tech-badge" style="background:rgba(0,242,96,0.15);color:#00f260;">Data Analysis</span>
-                            {% elif 'Cloud Architecture' in exp.position %}
-                                <span class="exp-tech-badge" style="background:rgba(255,153,0,0.15);color:#ff9900;">AWS</span>
-                                <span class="exp-tech-badge" style="background:rgba(0,242,254,0.15);color:#4facfe;">Cloud Infrastructure</span>
-                            {% endif %}
                         </div>
 
-                        <!-- Description Section -->
-                        <p class="text-white-50 mb-0">{{ exp.description }}</p>
+                        <!-- Achievements Bullet List -->
+                        <ul class="exp-achievements">
+                            {% for point in exp.achievements %}
+                            <li>{{ point|safe }}</li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
                 {% endfor %}
@@ -262,7 +243,7 @@
         </div>
     </section>
 
-    <!-- ============================================
+<!-- ============================================
     SECTION: PROJECTS
     ============================================ -->
     <section id="projects">
@@ -272,137 +253,155 @@
                 <p class="section-subtitle">Innovative solutions I've built</p>
             </div>
             <div class="row g-4">
-                <!-- AI Mutual Fund -->
+
+                <!-- 1. AI-Powered Document Analyzer -->
                 <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                    <a href="https://mutulfundrecommender.pythonanywhere.com/" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-card">
-                            <img src="{% static 'projects/fund-reco.png' %}" class="project-icon" alt="Logo">
-                            <h5 class="project-title">AI-Powered Mutual Fund Recommendation</h5>
-                            <p class="project-desc">Personalized recommendations based on investor goals, risk profile, and investment horizon.</p>
-                            <span class="project-tech">Python, AI/ML, Financial APIs</span>
-                            <ul class="project-features">
-                                <li>Hybrid filtering approach</li>
-                                <li>Real-time market analysis</li>
-                                <li>Secure & compliant</li>
-                            </ul>
-                            <div class="project-footer">August 2024 - May 2025</div>
+                    <div class="project-card">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <img src="{% static 'projects/document_processor.png' %}" class="project-icon mb-0" alt="Logo">
+                            <span class="exp-badge-live"><i class="fas fa-circle"></i> Live</span>
                         </div>
-                    </a>
+                        <h5 class="project-title">AI-Powered Document Analyzer</h5>
+                        <p class="project-desc">Built a RAG document Q&A app using FAISS embeddings and Groq LLM for multi-format files.</p>
+                        <span class="project-tech">RAG, FAISS, Groq LLM, Python</span>
+                        <ul class="project-features">
+                            <li>Multi-user session storage</li>
+                            <li>FAISS similarity search</li>
+                            <li>Supports multiple formats</li>
+                        </ul>
+                        <div class="project-footer">
+                            <span class="project-date"><i class="far fa-calendar-alt me-1"></i> May 2026 - Jul 2026</span>
+                            <a href="https://huggingface.co/spaces/ajay0987/AI-Powered-Document-Analyser" target="_blank" rel="noopener noreferrer" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
+                                <i class="fas fa-link me-1"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- AI-Powered Document Analyzer -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
-                    <a href="https://huggingface.co/spaces/ajay0987/AI-Powered-Document-Analyser" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-card">
-                            <img src="{% static 'projects/document_processor.png' %}" class="project-icon" alt="Logo">
-                            <h5 class="project-title">AI-Powered Document Analyzer</h5>
-                            <p class="project-desc">Processes PDF, Word, Excel, PowerPoint using NLU and LLM for intelligent Q&A.</p>
-                            <span class="project-tech">Python, Django, Gemini API, FAISS</span>
-                            <ul class="project-features">
-                                <li>Multi-user session storage</li>
-                                <li>FAISS similarity search</li>
-                                <li>Supports multiple formats</li>
-                            </ul>
-                            <div class="project-footer">August 2025 - September 2025</div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- AI Travel Guide -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                    <a href="https://aitourguide.pythonanywhere.com/" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-card">
-                            <img src="{% static 'projects/ai-travel-guide.png' %}" class="project-icon" alt="Logo">
-                            <h5 class="project-title">AI-Travel Guide</h5>
-                            <p class="project-desc">Intelligent travel companion providing personalized recommendations and itineraries.</p>
-                            <span class="project-tech">Flask, ML, HTML, CSS, JS</span>
-                            <ul class="project-features">
-                                <li>Personalized recommendations</li>
-                                <li>Dynamic itinerary generation</li>
-                                <li>API integration</li>
-                            </ul>
-                            <div class="project-footer">September 2025 - October 2025</div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- TaskCare360 Mobile App -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <a href="https://drive.google.com/file/d/148LSoddGppA5C0vmB2i7gOjeR9y8Jyzl/view?usp=drive_link" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-card">
-                            <img src="{% static 'projects/task-care.PNG' %}" class="project-icon" alt="Logo">
-                            <h5 class="project-title">TaskCare360 App</h5>
-                            <p class="project-desc">All-in-one React Native app combining real-time fitness step tracking with daily task management.</p>
-                            <span class="project-tech">React Native, Flask, REST API, SQLite, SMTP</span>
-                            <ul class="project-features">
-                                <li>Real-time step counter with treadmill calibration algorithms</li>
-                                <li>Auto-sync background database updates & email fitness summaries</li>
-                                <li>Task manager with cloud backup, OTP reset, and daily email reminders</li>
-                            </ul>
-                            <div class="project-footer">December 2024 - Present</div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Course Recommendation -->
+                <!-- 2. AI-Travel Guide -->
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <a href="https://king9.pythonanywhere.com/" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-card">
-                            <img src="{% static 'projects/course-reco.png' %}" class="project-icon" alt="Logo">
-                            <h5 class="project-title">AI-Powered Course Recommendation</h5>
-                            <p class="project-desc">Suggests relevant courses based on user interests using AI by computing similarity scores.</p>
-                            <span class="project-tech">AI, Python, HTML, CSS, JS</span>
-                            <ul class="project-features">
-                                <li>Real-time input handling</li>
-                                <li>Dynamic recommendation display</li>
-                                <li>Responsive UI</li>
-                            </ul>
-                            <div class="project-footer">July 2024 - September 2024</div>
+                    <div class="project-card">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <img src="{% static 'projects/ai-travel-guide.png' %}" class="project-icon mb-0" alt="Logo">
+                            <span class="exp-badge-live"><i class="fas fa-circle"></i> Live</span>
                         </div>
-                    </a>
+                        <h5 class="project-title">AI-Travel Guide</h5>
+                        <p class="project-desc">Built a Flask & Groq LLM conversational travel guide providing contextual Telangana itineraries and tips.</p>
+                        <span class="project-tech">Flask, Groq LLM, Python</span>
+                        <ul class="project-features">
+                            <li>Personalized recommendations</li>
+                            <li>Dynamic itinerary generation</li>
+                            <li>API integration</li>
+                        </ul>
+                        <div class="project-footer">
+                            <span class="project-date"><i class="far fa-calendar-alt me-1"></i> Apr 2026 - May 2026</span>
+                            <a href="https://aitourguide.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
+                                <i class="fas fa-link me-1"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Budget Wisely -->
+                <!-- 3. TaskCare360 App -->
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <a href="https://budgetwisely.pythonanywhere.com/" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-card">
-                            <img src="{% static 'projects/budget-wisely.png' %}" class="project-icon" alt="Logo">
-                            <h5 class="project-title">Budget Wisely</h5>
-                            <p class="project-desc">Powerful web app to help users take full control of their finances on a monthly or yearly basis.</p>
-                            <span class="project-tech">Python, Flask, Data Visualization</span>
-                            <ul class="project-features">
-                                <li>Dynamic pie charts & bar graphs</li>
-                                <li>Identifies overspending areas</li>
-                                <li>Data-driven decisions</li>
-                            </ul>
-                            <div class="project-footer">February 2025 - April 2025</div>
+                    <div class="project-card">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <img src="{% static 'projects/task-care.PNG' %}" class="project-icon mb-0" alt="Logo">
+                            <span class="exp-badge-live"><i class="fas fa-circle"></i> Live</span>
                         </div>
-                    </a>
+                        <h5 class="project-title">TaskCare360 App</h5>
+                        <p class="project-desc">Built a React Native & Flask task and fitness app with offline step sync and push notifications.</p>
+                        <span class="project-tech">React Native, Flask, REST API</span>
+                        <ul class="project-features">
+                            <li>Real-time step counter with treadmill calibration algorithms</li>
+                            <li>Auto-sync background database updates & email fitness summaries</li>
+                            <li>Task manager with cloud backup, OTP reset, and daily email reminders</li>
+                        </ul>
+                        <div class="project-footer">
+                            <span class="project-date"><i class="far fa-calendar-alt me-1"></i> Jan 2026 - Mar 2026</span>
+                            <a href="https://drive.google.com/file/d/148LSoddGppA5C0vmB2i7gOjeR9y8Jyzl/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
+                                <i class="fas fa-link me-1"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Revolt Motors Voice Assistant -->
-                <!-- 
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
-                    <a href="https://revvoicechatboat09.onrender.com/" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div class="project-card">
-                            <img src="{% static 'projects/revolt-assistant.png' %}" class="project-icon" alt="Logo">
-                            <h5 class="project-title">Revolt Motors Voice Assistant</h5>
-                            <p class="project-desc">AI-powered voice assistant with real-time audio processing and context-aware responses.</p>
-                            <span class="project-tech">Node.js, Gemini API, Socket.IO</span>
-                            <ul class="project-features">
-                                <li>Real-time audio processing</li>
-                                <li>Context-aware responses</li>
-                                <li>Bidirectional communication</li>
-                            </ul>
-                            <div class="project-footer">August 2025 - August 2025</div>
+                <!-- 4. Budget Wisely -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <img src="{% static 'projects/budget-wisely.png' %}" class="project-icon mb-0" alt="Logo">
+                            <span class="exp-badge-live"><i class="fas fa-circle"></i> Live</span>
                         </div>
-                    </a>
+                        <h5 class="project-title">Budget Wisely</h5>
+                        <p class="project-desc">Created a full-stack expense tracker with budget analytics and interactive data visualisations.</p>
+                        <span class="project-tech">Python, Flask, Data Visualization</span>
+                        <ul class="project-features">
+                            <li>Dynamic pie charts & bar graphs</li>
+                            <li>Identifies overspending areas</li>
+                            <li>Data-driven decisions</li>
+                        </ul>
+                        <div class="project-footer">
+                            <span class="project-date"><i class="far fa-calendar-alt me-1"></i> Aug 2025 - Dec 2025</span>
+                            <a href="https://budgetwisely.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
+                                <i class="fas fa-link me-1"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                -->
+
+                <!-- 5. AI-Powered Mutual Fund Recommendation -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-card">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <img src="{% static 'projects/fund-reco.png' %}" class="project-icon mb-0" alt="Logo">
+                            <span class="exp-badge-live"><i class="fas fa-circle"></i> Live</span>
+                        </div>
+                        <h5 class="project-title">AI-Powered Mutual Fund Recommendation</h5>
+                        <p class="project-desc">Built a Django mutual fund recommender using TF-IDF and cosine similarity with live market data APIs.</p>
+                        <span class="project-tech">Django, TF-IDF, Cosine Similarity</span>
+                        <ul class="project-features">
+                            <li>Hybrid filtering approach</li>
+                            <li>Real-time market analysis</li>
+                            <li>Secure & compliant</li>
+                        </ul>
+                        <div class="project-footer">
+                            <span class="project-date"><i class="far fa-calendar-alt me-1"></i> Jan 2025 - Jul 2025</span>
+                            <a href="https://mutulfundrecommender.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
+                                <i class="fas fa-link me-1"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. AI-Powered Course Recommendation -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-card">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <img src="{% static 'projects/course-reco.png' %}" class="project-icon mb-0" alt="Logo">
+                            <span class="exp-badge-live"><i class="fas fa-circle"></i> Live</span>
+                        </div>
+                        <h5 class="project-title">AI-Powered Course Recommendation</h5>
+                        <p class="project-desc">Suggests relevant courses based on user interests using AI by computing similarity scores.</p>
+                        <span class="project-tech">Python, AI, Similarity Scoring</span>
+                        <ul class="project-features">
+                            <li>Real-time input handling</li>
+                            <li>Dynamic recommendation display</li>
+                            <li>Responsive UI</li>
+                        </ul>
+                        <div class="project-footer">
+                            <span class="project-date"><i class="far fa-calendar-alt me-1"></i> Aug 2024 - Dec 2024</span>
+                            <a href="https://king9.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
+                                <i class="fas fa-link me-1"></i>Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
-
+    
     <!-- ============================================
     SECTION: CERTIFICATIONS
     ============================================ -->
@@ -560,7 +559,7 @@
     ============================================ -->
     <footer>
         <div class="container text-center">
-            <p class="text-white-50 mb-0">&copy; 2025 {{ name }} | Built with <i class="fas fa-heart text-danger"></i> | All Rights Reserved</p>
+            <p class="text-white-50 mb-0">&copy; 2025 {{ name }} | Made with <i class="fas fa-heart text-danger"></i> | All Rights Reserved</p>
         </div>
     </footer>
 

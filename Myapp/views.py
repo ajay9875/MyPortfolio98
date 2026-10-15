@@ -1,10 +1,27 @@
 from django.shortcuts import render
 from decouple import config
 from .models import VisitorCount
-
 from django.http import JsonResponse
-
 from django.views.decorators.csrf import csrf_exempt
+
+def format_count(n):
+    if n < 1000:
+        return str(n)
+    units = [
+        (1_000_000_000_000, 'T'),
+        (1_000_000_000, 'B'),
+        (1_000_000, 'M'),
+        (1_000, 'K'),
+    ]
+    for divisor, suffix in units:
+        if n >= divisor:
+            value = n / divisor
+            if value < 10:
+                rounded = round(value, 1)
+                return f"{rounded:g}{suffix}"
+            else:
+                return f"{int(round(value))}{suffix}"
+    return str(n)
 
 @csrf_exempt
 def increase_visitor(request):
@@ -18,27 +35,25 @@ def portfolio(request):
     visitor_data, created = VisitorCount.objects.get_or_create(id=1)
 
     context = {
-        "visitor_count": visitor_data.count,
+        "visitor_count": format_count(visitor_data.count),
         "ticker_items": [
-                    "🏆 All India NCAT Rank #39493 (Top 3%) | HackerRank Gold (Python 115/115, SQL 58/58)",
-                    "🤖 Developed Revolt Motors Voice Assistant (Node.js, Gemini API, Socket.IO)",
-                    "🚗 Built Axel Drive Pro: Custom WordPress Car Rental Plugin & CPT Theme Architecture",
-                    "📄 Built Intelli Doc AI for multi-format document processing & NLU",
-                    "📊 Created AI-Powered Mutual Fund Recommendation System (Collaborative/Content-Based Filtering)",
-                    "🎓 Built Adaptive Online Course Recommendation System using AI & similarity scoring",
-                    "✅ Developed TaskCare360: Flask To-Do App with email reminders & OTP security",
-                    "🌐 Designed & Deployed MyPortfolio24*7 (Live on Render)",
-                    "🎨 WordPress Engineering: Custom Themes/Plugins, PHP, CPTs, REST APIs & Elementor",
-                    "📈 Data Analysis: Python, SQL, ETL, EDA, Pandas, NumPy, Power BI, Tableau",
-                    "🤖 AI/ML: NLP, LLMs, Prompt Engineering, Scikit-Learn",
-                    "💻 Backend: Django, Flask, REST APIs, PostgreSQL, MySQL",
-                    "☁️ Cloud & DevOps: AWS (S3, Lambda), CI/CD, GitHub, Render"
-                ],
+            "🏆 Certified Python Programming Associate | 100+ HackerRank challenges solved",
+            "🚗 Building RideBasket: Kotlin + Jetpack Compose Android apps with a Django REST backend",
+            "🎨 WordPress Engineering: CPTs, Elementor, WooCommerce, ShopLentor & Orderable",
+            "📄 Built AI-Powered Document Analyzer using FAISS embeddings & Groq LLM",
+            "📊 Built AI-Powered Mutual Fund Recommender using TF-IDF & cosine similarity",
+            "✅ Built TaskCare360: React Native & Flask app with offline step sync & push notifications",
+            "🌐 Portfolio deployed on PythonAnywhere (Django + Bootstrap + AOS)",
+            "📈 Data & AI: Pandas, NumPy, Scikit-Learn, TensorFlow",
+            "💻 Backend: Django, Flask, REST APIs, JWT, PostgreSQL, MySQL, MongoDB",
+            "🎨 Frontend: React.js, React Native, HTML, CSS",
+            "☁️ Tools: Git/GitHub, VS Code, Android Studio, Postman",
+        ],
 
         'name': 'AJAY KUMAR SAH',
         'title': "",
         'about':
-               '''A dedicated and results-oriented professional with a passion for innovation and continuous improvement. I am seeking a challenging role that allows me to utilize my full potential and contribute directly to the strategic goals of a forward-thinking organization. My goal is to leverage my sincerity and hard work to achieve outstanding results while embracing new challenges.''',
+               '''Software Engineer building production-grade ride-booking and logistics platforms with Kotlin, React.js, Python, and Django. Developing RideBasket across Customer and Driver Android apps and a React.js Admin Dashboard, backed by unified Django REST APIs—delivering end-to-end features across booking, real-time tracking, payments, KYC, and operations.''',
         'email': 'kumar.ajaysah2003@gmail.com',
         'phone': '+91-9875400827',
         'address': "https://www.google.com/maps/place/17%C2%B016'14.7%22N+78%C2%B032'16.5%22E/@17.270735,78.5353368,17z/data=!3m1!4b1!4m4!3m3!8m2!3d17.270735!4d78.5379117?hl=en&entry=ttu&g_ep=EgoyMDI1MDcxMy4wIKXMDSoASAFQAw%3D%3D",
@@ -46,56 +61,92 @@ def portfolio(request):
         'gender': 'Male',
         'location': 'Hyderabad',
         
-        'skills': [
-            {'name': 'Problem Solving', 'image': 'skills/problem-solving.png'},
-            {'name': 'Python', 'image': 'skills/python.png'},
-            {'name': 'SQL', 'image': 'skills/sql.png'},
-            {'name': 'Large Language Models', 'image': 'skills/large.png'},
-            {'name': 'Prompt Engineering', 'image': 'skills/prompt.png'},
-            #{'name': 'Natural Language Processing', 'image': 'skills/natural.png'},
-            {'name': 'Django', 'image': 'skills/django.png'},
-            {'name': 'Flask', 'image': 'skills/flask.png'},
-            {'name': 'React', 'image': 'skills/react.png'},
-            {'name': 'Docker', 'image': 'skills/docker.png'},
-            {'name': 'PostgreSQL', 'image': 'skills/postgresql.png'},
-            {'name': 'Git', 'image': 'skills/git.png'},
-            {'name': 'GitHub', 'image': 'skills/github.png'},
-            #{'name': 'AWS', 'image': 'skills/aws.png'},
-            #{'name': 'Object Oriented Programming', 'image': 'skills/oop.png'},
-            {'name': 'Data Structure', 'image': 'skills/data-structure.png'},
-            #{'name': 'Pandas', 'image': 'skills/pandas.png'},
-            #{'name': 'Numpy', 'image': 'skills/numpy.png'},
-            #{'name': 'Matplotlib', 'image': 'skills/matplotlib.png'},
-            #{'name': 'Seaborn', 'image': 'skills/seaborn.png'},
-            {'name': 'HTML CSS', 'image': 'skills/html.png'},
-            {'name': 'JavaScript', 'image': 'skills/javascript.png'},
-            {'name': 'BootStrap', 'image': 'skills/bootstrap.png'},
+        # ===== SKILLS (Grouped by Category) =====
+        'skill_categories': [
+            {
+                'name': 'Languages',
+                'skills': [
+                    {'name': 'Python', 'image': 'python.png'},
+                    {'name': 'Kotlin', 'image': 'kotlin.png'},
+                    {'name': 'SQL', 'image': 'sql.png'},
+                    {'name': 'JavaScript', 'image': 'javascript.png'},
+                ]
+            },
+            {
+                'name': 'Backend',
+                'skills': [
+                    {'name': 'Django', 'image': 'django.png'},
+                    {'name': 'Flask', 'image': 'flask.png'},
+                    {'name': 'RESTful APIs', 'image': 'restful-apis.png'},
+                    {'name': 'JWT', 'image': 'jwt.png'},
+                ]
+            },
+            {
+                'name': 'Frontend',
+                'skills': [
+                    {'name': 'React.js', 'image': 'react.png'},
+                    {'name': 'React Native', 'image': 'react-native.png'},
+                    {'name': 'HTML and CSS', 'image': 'html.png'},
+                ]
+            },
+            {
+                'name': 'Tools',
+                'skills': [
+                    {'name': 'Git/GitHub', 'image': 'git.png'},
+                    {'name': 'VS Code', 'image': 'vs-code.png'},
+                    {'name': 'Android Studio', 'image': 'android-studio.png'},
+                    {'name': 'Postman', 'image': 'postman.png'},
+                ]
+            },
+            {
+                'name': 'AI & ML Libraries',
+                'skills': [
+                    {'name': 'Pandas', 'image': 'pandas.png'},
+                    {'name': 'NumPy', 'image': 'numpy.png'},
+                    {'name': 'Scikit-Learn', 'image': 'scikit-learn.png'},
+                    {'name': 'TensorFlow', 'image': 'tensorflow.png'},
+                ]
+            },
+            {
+                'name': 'Databases',
+                'skills': [
+                    {'name': 'PostgreSQL', 'image': 'postgresql.png'},
+                    {'name': 'MySQL', 'image': 'mysql.png'},
+                    {'name': 'MongoDB', 'image': 'mongodb.png'},
+                ]
+            },
         ],
 
+        # ===== WORK EXPERIENCE + INTERNSHIP (Updated to match resume) =====
         'experience': [
             {
-                'position': 'Prompt Engineering Intern',
-                'company': 'Future Interns',
-                'duration': '4 Weeks',
-                'live': 'https://aitourguide.pythonanywhere.com/',
-                'description': 'Completed a 4-week internship in prompt engineering, building structured prompt frameworks to guide AI models through step-by-step logical output.'
+                'position': 'Software Engineer',
+                'company': 'Rivalkart Logistics Pvt Ltd',
+                'duration': 'August 2026 - Present',
+                'live': 'https://ridebasket.in/',
+                'achievements': [
+                    'Developing <strong>RideBasket</strong>, a ride-booking and logistics platform across <strong>Customer Android</strong>, <strong>Driver Android</strong>, and a <strong>React.js Admin Dashboard</strong>.',
+                    'Building a centralised <strong>Django REST backend</strong> for auth, ride booking, map-based pickup/drop selection, tracking, trip history, wallet, SOS, OTP-verified ride start, document uploads, and driver payouts.',
+                    'Delivering admin workflows for <strong>live-ride monitoring</strong>, customer/driver management, <strong>KYC verification</strong>, payments, dynamic pricing, and reporting.',
+                    'Unifying end-to-end ride operations using <strong>Kotlin</strong>, <strong>Jetpack Compose</strong>, and <strong>React.js</strong>.',
+                ]
             },
             {
-                'position': 'Data Science Intern',
-                'company': 'Unified Mentor Private Limited',
-                'duration': '3 Months',
-                'live': '#',
-                'description': 'Completed a 3-month internship focused on data analysis and statistical modelling to generate predictive insights for business intelligence using Python and Tableau.'
+                'position': 'Software Developer Trainee',
+                'company': 'White Soft Info',
+                'duration': 'Mar 2026 - Jul 2026',
+                'live': 'https://wp-websites.free.nf/',
+                'achievements': [
+                    'Engineered responsive <strong>WordPress</strong> solutions using <strong>CPTs</strong>, <strong>Elementor</strong>, <strong>WooCommerce</strong>, <strong>ShopLentor</strong>, and <strong>Orderable</strong>.',
+                    'Automated backend booking workflows via custom post types and secure shortcodes, reducing manual data entry by <strong>80%</strong>.',
+                    'Built responsive digital architecture with custom theme templates, achieving <strong>100%</strong> mobile compatibility.',
+                    'Optimised custom checkout modules and Orderable integrations, boosting ordering efficiency by <strong>65%</strong>.',
+                    'Developed single-page web structures with custom footers and interactive features, unifying multi-site brand ecosystems.',
+                ]
             },
-            {
-                'position': 'Cloud Architecture using AWS',
-                'company': 'Webguru Infosystem',
-                'duration': '2 Months',
-                'live': '#',
-                'description': 'Completed a 2-month internship focused on designing and implementing scalable cloud infrastructure solutions using AWS services.'
-            }
         ],
 
+        # ===== EDUCATION (Unchanged) =====
         'education': [
             {
                 'degree': 'B.Tech/B.E. in Computer Science',
@@ -117,23 +168,23 @@ def portfolio(request):
             },
         ],
         
+        # ===== CERTIFICATIONS (Unchanged) =====
         'certifications': [
-            'Python (Basic)',
-            'SQL (Basic)',
+            'Python',
             'Cloud Architecture Using AWS',
-            'Problem Solving (Basic)',
-            'Communication Foundations',
+            'Problem Solving',
             'Data Science Internship',
-            'Version Control With Git',
             'AWS Certified Cloud Practitioner (CLF-C02) Cert Prep: 1 Cloud Concepts',
         ],
         
+        # ===== LANGUAGES (Unchanged) =====
         'languages': [
             {'name': 'English', 'proficiency': 'Fluent'},
             {'name': 'Hindi', 'proficiency': 'Native'},
             {'name': 'Bengali', 'proficiency': 'Intermediate'},
         ],
         
+        # ===== ACHIEVEMENTS (Unchanged) =====
         'achievements': [
             "All India NCAT 2025 Rank 39,493 (Top 3%)",
             'Implemented AI/ML solutions in financial and educational domains',
@@ -142,6 +193,7 @@ def portfolio(request):
             'Built complete web applications from backend to frontend',
         ],
 
+        # ===== SOCIAL LINKS (Unchanged) =====
         'social_links':{
             'github': config('GITHUB_URL', default='/'),
             'linkedin': config('LINKEDIN_URL', default='#'),

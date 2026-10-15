@@ -117,7 +117,7 @@
             background: rgba(12, 12, 29, 0.85) !important;
             backdrop-filter: blur(20px) !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px 0;
+            padding: 2px 20px !important;
             z-index: 1000;
         }
 
@@ -140,6 +140,10 @@
             50% {
                 filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.6));
             }
+        }
+
+        .navbar-nav {
+            gap: 16px;
         }
 
         .navbar-nav .nav-link {
@@ -174,15 +178,14 @@
         }
 
         .navbar-toggler {
-            border-color: rgba(255, 255, 255, 0.8) !important;
-            padding: 10px 14px;
-            border-radius: 10px;
+            border-radius: 5px;
         }
 
         /* Force Bootstrap toggler icon to white using custom SVG mask */
         .navbar-toggler-icon {
             filter: none !important;
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+            margin: 5px 0 !important;
         }
 
         /* ============================================
@@ -197,7 +200,7 @@
             border-bottom: 2px solid rgba(102, 126, 234, 0.3);
             overflow: hidden;
             position: sticky;
-            top: 0;
+            top: 50px;
             z-index: 999;
             align-items: center;
         }
@@ -614,32 +617,36 @@
             color: #a8b5ff;
         }
 
-        .exp-achievements {
-            list-style: none;
-            padding: 0;
-            margin-top: 15px;
-        }
+/* Experience Achievements List */
+.exp-achievements {
+    list-style: none;
+    padding: 0;
+}
 
-        .exp-achievements li {
-            padding: 8px 0;
-            padding-left: 28px;
-            position: relative;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.92rem;
-            line-height: 1.6;
-        }
+.exp-achievements li {
+    position: relative;
+    padding: 10px 0 6px 24px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.93rem;
+    line-height: 1.7;
+}
 
-        .exp-achievements li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-size: 1.2rem;
-        }
+.exp-achievements li::before {
+    content: '\f054'; /* FontAwesome chevron-right */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #667eea;
+    font-size: 0.7rem;
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    text-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
+}
 
-        .exp-achievements li strong {
-            color: #a8b5ff;
-        }
+.exp-achievements li strong {
+    color: #a8b5ff;
+    font-weight: 700;
+}
 
         .exp-tech-badge {
             display: inline-block;
@@ -666,7 +673,8 @@
             padding: 25px;
             height: 100%;
             transition: all 0.4s ease;
-            cursor: pointer;
+            display: flex;             /* ✅ ADD THIS */
+            flex-direction: column;    /* ✅ ADD THIS */
         }
 
         .project-card:hover {
@@ -727,19 +735,47 @@
         }
 
         .project-features li::before {
-            content: '✓';
+            content: '\f054';
+            font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", sans-serif;
+            font-weight: 900;
             position: absolute;
             left: 0;
-            color: #00f260;
-            font-weight: 700;
+            top: 0.55rem;
+            color: #667eea;
+            font-size: 0.7rem;
+            text-shadow: 0 0 6px rgba(102, 126, 234, 0.4);
         }
 
         .project-footer {
             padding-top: 15px;
-            margin-top: 15px;
+            margin-top: auto;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.45);
             font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;   /* ✅ date left, button right */
+            gap: 12px;
+            flex-wrap: wrap;                  /* ✅ wraps gracefully on mobile */
+        }
+
+        .project-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.8rem;
+        }
+
+        .project-footer i {
+            color: #667eea;
+            font-size: 0.85rem;
+        }
+
+        .project-footer .exp-tech-badge {
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            margin: 0;
         }
 
         /* ============================================
@@ -970,6 +1006,18 @@
             border-radius: 50%;
             animation: pulse 1.5s ease-in-out infinite;
             box-shadow: 0 0 15px #00f260;
+        }
+
+        a.exp-tech-badge {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        a.exp-tech-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+            border-color: rgba(102, 126, 234, 0.6);
         }
 
         footer {
