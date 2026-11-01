@@ -1043,6 +1043,95 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding: 30px 0;
         }
+    
+/* ============================================
+   MOBILE FIX: STATUS/TIME & VISITOR COUNTER
+   PythonAnywhere responsive positioning
+   ============================================ */
+
+@media screen and (max-width: 576px) {
+
+    /* Keep the status and live-time card in the
+       normal page layout instead of floating */
+    .status-time-card {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        left: auto !important;
+        bottom: auto !important;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: fit-content;
+        max-width: 100%;
+        gap: 12px;
+
+        padding: 10px 14px;
+        margin: 0 auto;
+
+        transform: none !important;
+        animation: none !important;
+        box-sizing: border-box;
+        z-index: 10;
+    }
+
+    /* Keep the status and date/time readable */
+    .status-item,
+    .time-item {
+        flex-shrink: 0;
+        gap: 6px;
+    }
+
+    .val {
+        font-size: 0.78rem;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+    }
+
+    .lbl {
+        font-size: 0.58rem;
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+
+    .divider {
+        flex-shrink: 0;
+        height: 24px;
+    }
+
+    /* Keep the visitor badge anchored to the
+       bottom-right corner of the mobile viewport */
+    .visitor-count {
+        position: fixed !important;
+
+        right: 10px !important;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+        left: auto !important;
+        top: auto !important;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: max-content;
+        max-width: calc(100vw - 20px);
+
+        padding: 8px 12px;
+        margin: 0;
+
+        font-size: 0.75rem;
+        white-space: nowrap;
+
+        transform: none !important;
+        z-index: 1000;
+
+        pointer-events: none;
+        box-sizing: border-box;
+    }
+
+}
 
 /* ============================================
             SECTION 13: RESPONSIVE
@@ -1104,10 +1193,6 @@
         box-shadow: var(--neon-glow);
         transition: all 0.3s ease;
         background-color: #0c0c1d; /* Adds dark background if the image doesn't fill the circle */
-    }
-
-    .visitor-count {
-        bottom: 120px;
     }
 
     /* Mobile Drawer Menu Navigation */
