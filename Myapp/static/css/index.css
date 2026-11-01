@@ -362,13 +362,26 @@
         }
 
         .profile-image {
-            width: 280px;
-            height: 280px;
+            position: relative;
+            z-index: 2; 
+            width: 50%;
+            height: 50%;
             border-radius: 50%;
-            object-fit: cover;
+            
+            /* 1. This keeps the aspect ratio and shows the whole image */
+            object-fit: contain; 
+            
+            /* 2. This ensures the face is centered */
+            object-position: center; 
+            
+            /* Optional: If "contain" makes the image too small, try changing it to "cover" and add this: */
+            /* object-fit: cover; 
+               object-position: center 20%;  <-- Moves the image down slightly so the face isn't cut off */
+
             border: 4px solid rgba(102, 126, 234, 0.3);
             box-shadow: var(--neon-glow);
             transition: all 0.3s ease;
+            background-color: #0c0c1d; /* Adds dark background if the image doesn't fill the circle */
         }
 
         .profile-image:hover {
@@ -1069,6 +1082,29 @@
     .profile-image {
         width: 190px;
         height: 190px;
+    }
+
+    .profile-image {
+    position: relative;
+    z-index: 2; 
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    
+    /* 1. This keeps the aspect ratio and shows the whole image */
+    object-fit: contain; 
+    
+    /* 2. This ensures the face is centered */
+    object-position: center; 
+    
+    /* Optional: If "contain" makes the image too small, try changing it to "cover" and add this: */
+    /* object-fit: cover; 
+        object-position: center 20%;  <-- Moves the image down slightly so the face isn't cut off */
+
+    border: 4px solid rgba(102, 126, 234, 0.3);
+    box-shadow: var(--neon-glow);
+    transition: all 0.3s ease;
+    background-color: #0c0c1d; /* Adds dark background if the image doesn't fill the circle */
     }
 
     /* Mobile Drawer Menu Navigation */
