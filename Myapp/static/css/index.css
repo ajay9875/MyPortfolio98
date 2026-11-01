@@ -993,8 +993,8 @@
         }
 
         /* ============================================
-                   SECTION 12: VISITOR & FOOTER
-                   ============================================ */
+            SECTION 12: VISITOR & FOOTER
+        ============================================ */
         .visitor-count {
             position: fixed;
             bottom: 20px;
@@ -1010,8 +1010,12 @@
             gap: 10px;
             z-index: 1000;
             box-shadow: var(--neon-glow);
+            
+            /* ADD THESE TWO LINES */
+            pointer-events: none; /* Stops it from interfering with scrolling */
+            will-change: transform; /* Tells mobile browsers to handle it smoothly */
         }
-
+        
         .live-dot {
             width: 10px;
             height: 10px;
