@@ -1104,31 +1104,28 @@
     /* Keep the visitor badge anchored to the
        bottom-right corner of the mobile viewport */
     .visitor-count {
-        position: fixed !important;
-
-        right: 10px !important;
-        bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
-        left: auto !important;
+        position: relative !important;
         top: auto !important;
+        right: auto !important;
+        left: auto !important;
+        bottom: auto !important;
 
+        margin: 5px !important;
+ 
         display: inline-flex;
         align-items: center;
         justify-content: center;
 
-        width: max-content;
-        max-width: calc(100vw - 20px);
+        width: fit-content;
+        max-width: 100%;
+        gap: 12px;
 
-        padding: 8px 12px;
-        margin: 0;
-
-        font-size: 0.75rem;
-        white-space: nowrap;
+        padding: 10px 14px;
 
         transform: none !important;
-        z-index: 1000;
-
-        pointer-events: none;
+        animation: none !important;
         box-sizing: border-box;
+        z-index: 10;
     }
 
 }
