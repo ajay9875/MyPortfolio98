@@ -1015,7 +1015,7 @@
             pointer-events: none; /* Stops it from interfering with scrolling */
             will-change: transform; /* Tells mobile browsers to handle it smoothly */
         }
-        
+
         .live-dot {
             width: 10px;
             height: 10px;
@@ -1104,6 +1104,10 @@
         box-shadow: var(--neon-glow);
         transition: all 0.3s ease;
         background-color: #0c0c1d; /* Adds dark background if the image doesn't fill the circle */
+    }
+
+    .visitor-count {
+        bottom: 120px;
     }
 
     /* Mobile Drawer Menu Navigation */
