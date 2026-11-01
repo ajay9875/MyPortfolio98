@@ -53,7 +53,7 @@ def portfolio(request):
         'name': 'AJAY KUMAR SAH',
         'title': "",
         'about':
-               '''Software Engineer building production-grade ride-booking and logistics platforms with Kotlin, React.js, Python, and Django. Developing RideBasket across Customer and Driver Android apps and a React.js Admin Dashboard, backed by unified Django REST APIs—delivering end-to-end features across booking, real-time tracking, payments, KYC, and operations.''',
+               '''Seeking a role in a professional and vibrant environment where I can utilize my full potential and contribute to the growth of the organization through sincerity and dedication. Eager to take on new opportunities to achieve impactful results.''',
         'email': 'kumar.ajaysah2003@gmail.com',
         'phone': '+91-9875400827',
         'address': "https://www.google.com/maps/place/17%C2%B016'14.7%22N+78%C2%B032'16.5%22E/@17.270735,78.5353368,17z/data=!3m1!4b1!4m4!3m3!8m2!3d17.270735!4d78.5379117?hl=en&entry=ttu&g_ep=EgoyMDI1MDcxMy4wIKXMDSoASAFQAw%3D%3D",
