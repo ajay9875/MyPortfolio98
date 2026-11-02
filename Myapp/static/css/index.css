@@ -1062,7 +1062,7 @@
 
     /* Keep the status and live-time card in the
        normal page layout instead of floating */
-
+ 
         .glow-ring:nth-child(1) {
             width: 300px !important;
             height: 100px !important;  
