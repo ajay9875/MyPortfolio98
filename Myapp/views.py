@@ -5,22 +5,27 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 def format_count(n):
-    if n < 1000:
+    if n < 10_000:
         return str(n)
+        
     units = [
         (1_000_000_000_000, 'T'),
         (1_000_000_000, 'B'),
         (1_000_000, 'M'),
         (1_000, 'K'),
     ]
+    
     for divisor, suffix in units:
         if n >= divisor:
             value = n / divisor
-            if value < 10:
-                rounded = round(value, 1)
-                return f"{rounded:g}{suffix}"
+            
+            # If you want 20.3K, change the condition to < 100
+            if value < 100:
+                # Strip trailing .0 if it's a whole number (e.g., 20.0 -> 20)
+                return f"{value:.1f}".rstrip('0').rstrip('.') + suffix
             else:
                 return f"{int(round(value))}{suffix}"
+                
     return str(n)
 
 @csrf_exempt
@@ -181,7 +186,6 @@ def portfolio(request):
         'languages': [
             {'name': 'English', 'proficiency': 'Fluent'},
             {'name': 'Hindi', 'proficiency': 'Native'},
-            {'name': 'Bengali', 'proficiency': 'Intermediate'},
         ],
         
         # ===== ACHIEVEMENTS (Unchanged) =====

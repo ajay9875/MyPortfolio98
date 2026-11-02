@@ -188,6 +188,9 @@
 
         .navbar-toggler {
             border-radius: 5px;
+            border: none !important;       /* ✅ Removes the visible border */
+            outline: none !important;      /* ✅ Removes the focus outline/glow */
+            box-shadow: none !important;   /* ✅ Removes Bootstrap's focus ring */
         }
 
         /* Force Bootstrap toggler icon to white using custom SVG mask */
@@ -195,6 +198,17 @@
             filter: none !important;
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
             margin: 5px 0 !important;
+        }
+
+        /* Bootstrap 5 default */
+        .navbar-toggler-icon {
+            display: inline-block;
+            width: 1em;         /* ← size comes from here */
+            height: 1em;        /* ← and here */
+            vertical-align: middle;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100%;
         }
 
         /* ============================================
@@ -1100,15 +1114,20 @@
         height: 24px;
     }
 
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+        }
+
     /* Keep the visitor badge anchored to the
        bottom-right corner of the mobile viewport */
     .visitor-count {
-        position: relative !important;
+        position: fixed !important;
         top: auto !important;
-        right: auto !important;
         left: auto !important;
-        bottom: auto !important;
-
+        bottom: 10px !important;
+        right: 5px !important;
         margin: 5px !important;
  
         display: inline-flex;
@@ -1157,6 +1176,11 @@
         padding: 20px;
     }
 
+    footer {
+        /* Pushes the footer text up so the floating badge doesn't cover it */
+        padding-bottom: 70px !important; 
+    }
+
 }
 
 /* ============================================
@@ -1195,7 +1219,7 @@
 
     .profile-image-wrapper {
         margin-top: 1.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 0.5rem !important;
     }
 
     .profile-image {
