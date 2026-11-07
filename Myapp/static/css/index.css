@@ -1183,6 +1183,190 @@
 
 }
 
+/* --- CUSTOM MODAL STYLES --- */
+.custom-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 6, 12, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 99999;
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.custom-modal-backdrop.show {
+    display: flex;
+    opacity: 1;
+}
+
+.custom-modal-content {
+    background: #111827;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(41, 182, 246, 0.1);
+    text-align: center;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.custom-modal-backdrop.show .custom-modal-content {
+    transform: translateY(0);
+}
+
+/* Typography & Icons */
+.modal-header-icon {
+    font-size: 40px;
+    color: #29b6f6;
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px rgba(41, 182, 246, 0.4);
+}
+
+.modal-header-icon.success-icon {
+    color: #10b981;
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.modal-title {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.modal-desc {
+    color: #a4b0be;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Benefits List */
+.modal-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.modal-benefits li {
+    color: #e2e8f0;
+    font-size: 13px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-benefits li:last-child {
+    margin-bottom: 0;
+}
+
+.text-cyan { color: #00f2fe; }
+.text-purple { color: #a855f7; }
+.text-yellow { color: #fbbf24; }
+.text-green { color: #10b981; }
+
+/* Buttons */
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.btn-modal-cancel, .btn-modal-download {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-modal-cancel {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.btn-modal-cancel:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-modal-download {
+    background: #29b6f6;
+    color: #000;
+}
+
+.btn-modal-download:hover {
+    background: #03a9f4;
+    box-shadow: 0 0 15px rgba(41, 182, 246, 0.4);
+}
+
+/* Progress Bar */
+/* --- PROGRESS BAR ANIMATION --- */
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+/* Animated sliding bar */
+.progress-bar-fill {
+    height: 100%;
+    width: 50%; /* Fixed width for sliding */
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    border-radius: 10px;
+    animation: slideProgress 1.5s ease-in-out infinite;
+}
+
+@keyframes slideProgress {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+}
+
+.progress-text {
+    color: #29b6f6;
+    font-weight: 700;
+    margin-top: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    animation: pulseText 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Spinner adjustment inside modal */
+.custom-spinner {
+    min-height: auto; /* Override your global spinner height */
+    margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .custom-modal-content {
+        padding: 20px;
+    }
+    .modal-actions {
+        flex-direction: column-reverse; /* Stack buttons on small screens */
+    }
+}
+
 /* ============================================
             SECTION 13: RESPONSIVE
             ============================================ */

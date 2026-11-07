@@ -113,3 +113,65 @@ function updateClock() {
     });
 
 }); // ← THIS WAS MISSING! The closing brace for the first DOMContentLoaded
+
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("app-download-modal");
+    const stateConfirm = document.getElementById("modal-state-confirm");
+    const stateProgress = document.getElementById("modal-state-progress");
+    const stateSuccess = document.getElementById("modal-state-success");
+    
+    const btnCancel = document.getElementById("btn-cancel-download");
+    const btnStart = document.getElementById("btn-start-download");
+    const btnCloseSuccess = document.getElementById("btn-close-success");
+
+    const APK_URL = "https://github.com/ajay9875/TaskCareMobile/releases/download/v1.2.1/TaskCare360.apk";
+
+    // 1. Open modal
+    const taskCareCard = document.getElementById("taskcare360");
+    if (taskCareCard) {
+        const demoBtn = taskCareCard.querySelector("a");
+        if (demoBtn) {
+            demoBtn.addEventListener("click", (e) => {
+                e.preventDefault(); // Stop the default click
+                modal.classList.add("show");
+                stateConfirm.style.display = "block";
+                stateProgress.style.display = "none";
+                stateSuccess.style.display = "none";
+            });
+        }
+    }
+
+    // 2. Close modal
+    btnCancel.addEventListener("click", () => {
+        modal.classList.remove("show");
+    });
+
+    // 3. Trigger Download
+    btnStart.addEventListener("click", () => {
+        // Switch UI state to spinner
+        stateConfirm.style.display = "none";
+        stateProgress.style.display = "block";
+
+        // Create a hidden iframe to trigger the download without leaving the page
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = APK_URL;
+        document.body.appendChild(iframe);
+
+        // Since we can't track real progress due to CORS, we simulate the wait
+        // Adjust the 4000ms (4 seconds) based on the actual file size / your connection speed
+        setTimeout(() => {
+            // Show success state
+            stateProgress.style.display = "none";
+            stateSuccess.style.display = "block";
+            
+            // Clean up the iframe
+            document.body.removeChild(iframe);
+        }, 4000); 
+    });
+    // 4. Close modal (Success)
+    btnCloseSuccess.addEventListener("click", () => {
+        modal.classList.remove("show");
+    });
+
+}); // End of DOMContentLoaded
