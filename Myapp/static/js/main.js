@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const APK_URL = "https://github.com/ajay9875/TaskCareMobile/releases/download/v1.2.2/FitWisely.apk";
     
     // 1. Open modal
-    const taskCareCard = document.getElementById("taskcare360");
+    const taskCareCard = document.getElementById("fitwisely");
     if (taskCareCard) {
         const demoBtn = document.getElementById("btn-open-app-modal");
         if (demoBtn) {
