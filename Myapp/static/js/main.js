@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 modal.classList.add("show");
                 stateConfirm.style.display = "block";
                 stateProgress.style.display = "none";
-                stateSuccess.style.display = "none";
+                stateSuccess.style.display = "none"; 
             });
         }
     }
