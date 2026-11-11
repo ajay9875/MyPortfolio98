@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 stateProgress.style.display = "none";
                 stateSuccess.style.display = "none"; 
             });
-        }
+        } 
     }
 
     // 2. Close modal
