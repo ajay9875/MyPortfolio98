@@ -243,7 +243,7 @@
         </div>
     </section>
 
-    <!-- TaskCare360 Download Modal -->
+<!-- FitWisely Download Modal-->
 <div id="app-download-modal" class="custom-modal-backdrop">
     <div class="custom-modal-content">
         
@@ -252,14 +252,14 @@
             <div class="modal-header-icon">
                 <i class="fas fa-mobile-alt"></i>
             </div>
-            <h3 class="modal-title">Download TaskCare360</h3>
-            <p class="modal-desc">Experience the ultimate productivity and fitness tracker.</p>
+            <h3 class="modal-title">Download FitWisely</h3>
+            <p class="modal-desc">Track your fitness, manage tasks, and compete with teams — all in one app.</p>
             
             <ul class="modal-benefits">
-                <li><i class="fas fa-walking text-cyan"></i> Real-time step counter & treadmill calibration</li>
-                <li><i class="fas fa-tasks text-purple"></i> Smart task management with cloud backup</li>
-                <li><i class="fas fa-bell text-yellow"></i> Push notifications & daily email summaries</li>
-                <li><i class="fas fa-shield-alt text-green"></i> Secure OTP password reset</li>
+                <li><i class="fas fa-walking text-cyan"></i> Real-time step counter with walking & treadmill modes</li>
+                <li><i class="fas fa-users text-purple"></i> Team leaderboards — create or join up to 10 teams</li>
+                <li><i class="fas fa-tasks text-yellow"></i> Task manager with cloud sync & daily reminders</li>
+                <li><i class="fas fa-bell text-green"></i> Push notifications & email fitness summaries</li>
             </ul>
 
             <div class="modal-actions">
@@ -268,32 +268,28 @@
             </div>
         </div>
 
-        <!-- STATE 2: Downloading (Spinner Removed) -->
+        <!-- STATE 2: Downloading -->
         <div id="modal-state-progress" class="modal-state" style="display: none;">
             <div class="modal-header-icon">
                 <i class="fas fa-download"></i>
             </div>
-            
             <h4 class="modal-title">Downloading...</h4>
             <p class="modal-desc">Please wait while we fetch the file from the server.</p>
-            
-            <!-- Progress Bar -->
             <div class="progress-container">
                 <div id="download-progress-bar" class="progress-bar-fill"></div>
             </div>
         </div>
 
-        <!-- STATE 3: Success (Professional Message) -->
+        <!-- STATE 3: Success -->
         <div id="modal-state-success" class="modal-state" style="display: none;">
             <div class="modal-header-icon success-icon">
                 <i class="fas fa-check-circle"></i>
             </div>
-            <h3 class="modal-title">Download Complete!</h3>
+            <h3 class="modal-title">Download Started!</h3>
             <p class="modal-desc" style="font-size: 15px; line-height: 1.6;">
-                TaskCare360.apk has been downloaded successfully.<br><br>
+                Your download has started.<br><br>
                 Please open your <strong>Downloads folder</strong> or check your <strong>notification bar</strong> to install the app.
             </p>
-            
             <div class="modal-actions" style="justify-content: center; margin-top: 10px;">
                 <button id="btn-close-success" class="btn-modal-download" style="width: 100%;">Close</button>
             </div>
@@ -386,26 +382,27 @@
                     </div>
                 </div>
 
-                <!-- 3. TaskCare360 App -->
-                <div id="taskcare360" class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <!-- 3. FitWisely App -->
+                <div id="fitwisely" class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-card">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <img src="{% static 'projects/task-care.PNG' %}" class="project-icon mb-0" alt="Logo">
+                            <img src="{% static 'projects/fit-wisely.PNG' %}" class="project-icon mb-0" alt="FitWisely Logo">
                             <span class="exp-badge-live"><i class="fas fa-circle"></i> Live</span>
                         </div>
-                        <h5 class="project-title">TaskCare360 App</h5>
-                        <p class="project-desc">Built a React Native & Flask task and fitness app with offline step sync and push notifications.</p>
-                        <span class="project-tech">React Native, Flask, REST API</span>
+                        <h5 class="project-title">FitWisely App</h5>
+                        <p class="project-desc">Built a React Native & Flask fitness app with real-time step tracking, team leaderboards, offline sync, and push notifications.</p>
+                        <span class="project-tech">React Native, Expo, Flask, REST API, MySQL</span>
                         <ul class="project-features">
-                            <li>Real-time step counter with treadmill calibration algorithms</li>
-                            <li>Auto-sync background database updates & email fitness summaries</li>
+                            <li>Real-time step tracker with treadmill calibration & background sync</li>
+                            <li>Team leaderboards — create or join up to 10 teams with live member rankings</li>
+                            <li>Auto-sync database updates, push notifications & email fitness summaries</li>
                             <li>Task manager with cloud backup, OTP reset, and daily email reminders</li>
                         </ul>
                         <div class="project-footer">
                             <span class="project-date"><i class="far fa-calendar-alt me-1"></i> Jan 2026 - Mar 2026</span>
-                            <a href="https://github.com/ajay9875/TaskCareMobile/releases/download/v1.2.1/TaskCare360.apk" target="_blank" rel="noopener noreferrer" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
-                                <i class="fas fa-link me-1"></i>Live Demo
-                            </a>
+                            <button type="button" id="btn-open-app-modal" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;border:none;cursor:pointer;">
+                                <i class="fas fa-download me-1"></i>Download
+                            </button>
                         </div>
                     </div>
                 </div>

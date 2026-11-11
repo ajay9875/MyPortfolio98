@@ -124,12 +124,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnStart = document.getElementById("btn-start-download");
     const btnCloseSuccess = document.getElementById("btn-close-success");
 
-    const APK_URL = "https://github.com/ajay9875/TaskCareMobile/releases/download/v1.2.1/TaskCare360.apk";
-
+    const APK_URL = "https://github.com/ajay9875/TaskCareMobile/releases/download/v1.2.2/FitWisely.apk";
+    
     // 1. Open modal
     const taskCareCard = document.getElementById("taskcare360");
     if (taskCareCard) {
-        const demoBtn = taskCareCard.querySelector("a");
+        const demoBtn = document.getElementById("btn-open-app-modal");
         if (demoBtn) {
             demoBtn.addEventListener("click", (e) => {
                 e.preventDefault(); // Stop the default click
@@ -142,32 +142,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 2. Close modal
-    btnCancel.addEventListener("click", () => {
+    function closeModal() {
         modal.classList.remove("show");
-    });
+        btnStart.disabled = false;   // ← re-enable for next time
+    }
+
+    btnCancel.addEventListener("click", closeModal);
+    btnCloseSuccess.addEventListener("click", closeModal);
 
     // 3. Trigger Download
     btnStart.addEventListener("click", () => {
-        // Switch UI state to spinner
+        btnStart.disabled = true;   // ← prevent double-clicks
+
         stateConfirm.style.display = "none";
         stateProgress.style.display = "block";
 
-        // Create a hidden iframe to trigger the download without leaving the page
         const iframe = document.createElement("iframe");
         iframe.style.display = "none";
         iframe.src = APK_URL;
         document.body.appendChild(iframe);
 
-        // Since we can't track real progress due to CORS, we simulate the wait
-        // Adjust the 4000ms (4 seconds) based on the actual file size / your connection speed
         setTimeout(() => {
-            // Show success state
             stateProgress.style.display = "none";
             stateSuccess.style.display = "block";
-            
-            // Clean up the iframe
             document.body.removeChild(iframe);
-        }, 4000); 
+        }, 1000);
     });
     // 4. Close modal (Success)
     btnCloseSuccess.addEventListener("click", () => {
