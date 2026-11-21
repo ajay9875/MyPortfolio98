@@ -114,63 +114,108 @@ function updateClock() {
 
 }); // ← THIS WAS MISSING! The closing brace for the first DOMContentLoaded
 
+
+// ============================================
+// FITWISELY APK DOWNLOAD
+// ============================================
 document.addEventListener("DOMContentLoaded", () => {
+
     const modal = document.getElementById("app-download-modal");
     const stateConfirm = document.getElementById("modal-state-confirm");
     const stateProgress = document.getElementById("modal-state-progress");
     const stateSuccess = document.getElementById("modal-state-success");
-    
+
+    const btnOpen = document.getElementById("btn-open-app-modal");
     const btnCancel = document.getElementById("btn-cancel-download");
     const btnStart = document.getElementById("btn-start-download");
     const btnCloseSuccess = document.getElementById("btn-close-success");
 
-    const APK_URL = "https://github.com/ajay9875/TaskCareMobile/releases/download/v1.2.2/FitWisely.apk";
-    
-    // 1. Open modal
-    const taskCareCard = document.getElementById("fitwisely");
-    if (taskCareCard) {
-        const demoBtn = document.getElementById("btn-open-app-modal");
-        if (demoBtn) {
-            demoBtn.addEventListener("click", (e) => {
-                e.preventDefault(); // Stop the default click
-                modal.classList.add("show");
-                stateConfirm.style.display = "block";
-                stateProgress.style.display = "none";
-                stateSuccess.style.display = "none"; 
-            });
-        } 
+    const APK_URL = "https://github.com/ajay9875/TaskCareMobile/releases/download/1.2.4/FitWisely.apk";
+    // Verify required HTML elements
+    if (!modal || !stateConfirm || !stateProgress ||
+        !stateSuccess || !btnOpen || !btnCancel ||
+        !btnStart || !btnCloseSuccess) {
+        console.error("FitWisely download modal elements missing.");
+        return;
     }
 
-    // 2. Close modal
-    function closeModal() {
+    let isDownloading = false;
+
+    // Reset modal
+    function resetModal() {
         modal.classList.remove("show");
-        btnStart.disabled = false;   // ← re-enable for next time
+
+        stateConfirm.style.display = "block";
+        stateProgress.style.display = "none";
+        stateSuccess.style.display = "none";
+
+        btnStart.disabled = false;
+        isDownloading = false;
     }
 
-    btnCancel.addEventListener("click", closeModal);
-    btnCloseSuccess.addEventListener("click", closeModal);
+    // Open modal
+    btnOpen.addEventListener("click", (e) => {
+        e.preventDefault();
 
-    // 3. Trigger Download
+        resetModal();
+        modal.classList.add("show");
+    });
+
+    // Close modal
+    btnCancel.addEventListener("click", resetModal);
+    btnCloseSuccess.addEventListener("click", resetModal);
+
+    // Start APK download
     btnStart.addEventListener("click", () => {
-        btnStart.disabled = true;   // ← prevent double-clicks
+
+        if (isDownloading) return;
+
+        isDownloading = true;
+        btnStart.disabled = true;
 
         stateConfirm.style.display = "none";
         stateProgress.style.display = "block";
+        stateSuccess.style.display = "none";
 
-        const iframe = document.createElement("iframe");
-        iframe.style.display = "none";
-        iframe.src = APK_URL;
-        document.body.appendChild(iframe);
+        try {
+            // Create a direct browser download request.
+            // No iframe and no forced iframe removal.
+            const downloadLink = document.createElement("a");
 
-        setTimeout(() => {
+            downloadLink.href = APK_URL;
+            downloadLink.target = "_blank";
+            downloadLink.rel = "noopener noreferrer";
+            downloadLink.style.display = "none";
+
+            document.body.appendChild(downloadLink);
+
+            // Trigger directly from the user's click
+            downloadLink.click();
+
+            downloadLink.remove();
+
+            // Show request confirmation
+            setTimeout(() => {
+                stateProgress.style.display = "none";
+                stateSuccess.style.display = "block";
+
+                isDownloading = false;
+                btnStart.disabled = false;
+
+            }, 700);
+
+        } catch (error) {
+
+            console.error("FitWisely download error:", error);
+
             stateProgress.style.display = "none";
-            stateSuccess.style.display = "block";
-            document.body.removeChild(iframe);
-        }, 1000);
-    });
-    // 4. Close modal (Success)
-    btnCloseSuccess.addEventListener("click", () => {
-        modal.classList.remove("show");
+            stateConfirm.style.display = "block";
+
+            btnStart.disabled = false;
+            isDownloading = false;
+
+            alert("Unable to start the download. Please try again.");
+        }
     });
 
-}); // End of DOMContentLoaded
+});

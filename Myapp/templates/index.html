@@ -103,8 +103,8 @@
             </div>
         </div>
 
-<!-- Hero Content Row -->
-<div class="row align-items-center justify-content-between flex-column-reverse flex-lg-row g-4">
+    <!-- Hero Content Row -->
+    <div class="row align-items-center justify-content-between flex-column-reverse flex-lg-row g-4">
     
     <!-- Text Content Column -->
     <div class="col-lg-6 hero-content text-center text-lg-start">
@@ -141,6 +141,8 @@
             <div class="glow-ring"></div>
             <img src="{% static 'self-img.jpg' %}" class="profile-image" alt="Profile">
         </div>
+    </div>
+
     </div>
 
 </div>
@@ -285,11 +287,27 @@
             <div class="modal-header-icon success-icon">
                 <i class="fas fa-check-circle"></i>
             </div>
-            <h3 class="modal-title">Download Started!</h3>
+            
+            <h3 class="modal-title">Download Request Sent!</h3>
+
             <p class="modal-desc" style="font-size: 15px; line-height: 1.6;">
-                Your download has started.<br><br>
-                Please open your <strong>Downloads folder</strong> or check your <strong>notification bar</strong> to install the app.
+                Your download request has been sent to your browser.
+
+                <br><br>
+
+                Please check your Downloads folder or browser download notification.
+
+                <br><br>
+
+                If the download didn't start,
+                <br><a href="https://github.com/ajay9875/TaskCareMobile/releases/download/1.2.4/FitWisely.apk"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="color: #00d4ff; font-weight: 600;">
+                    Click here to download FitWisely
+                </a>
             </p>
+
             <div class="modal-actions" style="justify-content: center; margin-top: 10px;">
                 <button id="btn-close-success" class="btn-modal-download" style="width: 100%;">Close</button>
             </div>
@@ -310,26 +328,27 @@
 
             <div class="row g-4">
 
-                <!-- 0. RideBasket (Ongoing) -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <!-- 0. FitWisely Android App (Ongoing) -->
+                <div id="fitwisely" class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-card">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <img src="{% static 'projects/ridebasket.png' %}" class="project-icon mb-0" alt="RideBasket Logo">
+                            <img src="{% static 'projects/fit-wisely.png' %}" class="project-icon mb-0" alt="FitWisely Logo">
                             <span class="exp-badge-live"><i class="fas fa-circle"></i> Live</span>
                         </div>
-                        <h5 class="project-title">RideBasket — Ride Booking Platform</h5>
-                        <p class="project-desc">Developing a full-stack ride-booking and logistics platform across Customer &amp; Driver Android apps with a React.js Admin Dashboard and a centralised Django REST backend.</p>
-                        <span class="project-tech">Kotlin, Jetpack Compose, React.js, Django REST</span>
+                        <h5 class="project-title">FitWisely Android App</h5>
+                        <p class="project-desc">Built a React Native & Flask fitness app with real-time step tracking, team leaderboards, offline sync, and push notifications.</p>
+                        <span class="project-tech">React Native, Expo, Flask, REST API, MySQL</span>
                         <ul class="project-features">
-                            <li>Real-time tracking, OTP-verified ride start &amp; SOS</li>
-                            <li>Wallet, driver payouts, KYC &amp; dynamic pricing</li>
-                            <li>Admin workflows for live-ride monitoring &amp; reporting</li>
+                            <li>Real-time step tracker with treadmill calibration & background sync</li>
+                            <li>Team leaderboards — create or join up to 10 teams with live member rankings</li>
+                            <li>Auto-sync database updates, push notifications & email fitness summaries</li>
+                            <li>Task manager with cloud backup, OTP reset, and daily email reminders</li>
                         </ul>
                         <div class="project-footer">
                             <span class="project-date"><i class="far fa-calendar-alt me-1"></i> Aug 2026 - Present</span>
-                            <a href="https://ridebasket.in/" target="_blank" rel="noopener noreferrer" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
-                                <i class="fas fa-link me-1"></i>Live Demo
-                            </a>
+                            <button type="button" id="btn-open-app-modal" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;border:none;cursor:pointer;">
+                                <i class="fas fa-download me-1"></i>Download
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -382,27 +401,26 @@
                     </div>
                 </div>
 
-                <!-- 3. FitWisely App -->
-                <div id="fitwisely" class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <!-- 3. RideBasket -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
                     <div class="project-card">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <img src="{% static 'projects/fit-wisely.png' %}" class="project-icon mb-0" alt="FitWisely Logo">
+                            <img src="{% static 'projects/ridebasket.png' %}" class="project-icon mb-0" alt="RideBasket Logo">
                             <span class="exp-badge-live"><i class="fas fa-circle"></i> Live</span>
                         </div>
-                        <h5 class="project-title">FitWisely App</h5>
-                        <p class="project-desc">Built a React Native & Flask fitness app with real-time step tracking, team leaderboards, offline sync, and push notifications.</p>
-                        <span class="project-tech">React Native, Expo, Flask, REST API, MySQL</span>
+                        <h5 class="project-title">RideBasket — Ride Booking Platform</h5>
+                        <p class="project-desc">Developed a full-stack ride-booking and logistics platform across Customer &amp; Driver Android apps with a React.js Admin Dashboard and a centralised Django REST backend.</p>
+                        <span class="project-tech">Kotlin, Jetpack Compose, React.js, Django REST</span>
                         <ul class="project-features">
-                            <li>Real-time step tracker with treadmill calibration & background sync</li>
-                            <li>Team leaderboards — create or join up to 10 teams with live member rankings</li>
-                            <li>Auto-sync database updates, push notifications & email fitness summaries</li>
-                            <li>Task manager with cloud backup, OTP reset, and daily email reminders</li>
+                            <li>Real-time tracking, OTP-verified ride start &amp; SOS</li>
+                            <li>Wallet, driver payouts, KYC &amp; dynamic pricing</li>
+                            <li>Admin workflows for live-ride monitoring &amp; reporting</li>
                         </ul>
                         <div class="project-footer">
                             <span class="project-date"><i class="far fa-calendar-alt me-1"></i> Jan 2026 - Mar 2026</span>
-                            <button type="button" id="btn-open-app-modal" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;border:none;cursor:pointer;">
-                                <i class="fas fa-download me-1"></i>Download
-                            </button>
+                            <a href="https://github.com/ajay9875/RideBasket-Backend-Repo" target="_blank" rel="noopener noreferrer" class="exp-tech-badge" style="background:rgba(102,126,234,0.2);color:#a8b5ff;text-decoration:none;display:inline-block;">
+                                <i class="fas fa-link me-1"></i>Github Repo
+                            </a>
                         </div>
                     </div>
                 </div>
