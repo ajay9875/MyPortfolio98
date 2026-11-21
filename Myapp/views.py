@@ -43,15 +43,14 @@ def portfolio(request):
         "visitor_count": format_count(visitor_data.count),
         "ticker_items": [
             "🏆 Certified Python Programming Associate | 100+ HackerRank challenges solved",
-            "🚗 Building RideBasket: Kotlin + Jetpack Compose Android apps with a Django REST backend",
+            "🚗 Built RideBasket: Kotlin + Jetpack Compose Android apps with a Django REST backend",
             "🎨 WordPress Engineering: CPTs, Elementor, WooCommerce, ShopLentor & Orderable",
             "📄 Built AI-Powered Document Analyzer using FAISS embeddings & Groq LLM",
             "📊 Built AI-Powered Mutual Fund Recommender using TF-IDF & cosine similarity",
-            "✅ Built TaskCare360: React Native & Flask app with offline step sync & push notifications",
-            "🌐 Portfolio deployed on PythonAnywhere (Django + Bootstrap + AOS)",
+            "✅ Built FitWisely: React Native & Flask app with offline, background step sync & push notifications",
             "📈 Data & AI: Pandas, NumPy, Scikit-Learn, TensorFlow",
             "💻 Backend: Django, Flask, REST APIs, JWT, PostgreSQL, MySQL, MongoDB",
-            "🎨 Frontend: React.js, React Native, HTML, CSS",
+            "🎨 Frontend: React.js, React Native, HTML, CSS, Kotlin",
             "☁️ Tools: Git/GitHub, VS Code, Android Studio, Postman",
         ],
 
